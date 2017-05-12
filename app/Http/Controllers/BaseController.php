@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Doctrine\ORM\EntityManager;
-//use LaravelDoctrine\ORM\Facades\EntityManager;
+//use Doctrine\ORM\EntityManager;
+use App\Entities\Conta;
+
+use LaravelDoctrine\ORM\Facades\EntityManager;
 
 class BaseController extends Controller
 {
@@ -16,12 +18,12 @@ class BaseController extends Controller
     public function home()
     {
 
-//        $conta = new \Conta();
-//        $conta->set
-//        
-//        EntityManager::persist($conta);
-//        EntityManager::flush();
-//        
-//        return $conta->getId();
+        $conta = new Conta();
+        $conta->setSaldo(50);
+        
+        EntityManager::persist($conta);
+        EntityManager::flush();
+        
+        return $conta->getId();
     }
 }
