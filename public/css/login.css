@@ -1,0 +1,29 @@
+body {
+    background-color: #f5f5f5;
+    font-family: 'Roboto';
+}
+
+.login {
+    width: 200px;
+    margin: auto;
+    margin-top: 12%;
+    text-align: center;
+}
+
+.login input {
+    margin-top: 1em;
+    width: 200px;
+    height: 2em;
+}
+
+.login .submit {
+    width: 100px;
+}
+
+.login .forgotPassword {
+    cursor: pointer;
+    margin-top: 0.5em;
+    display: block;
+    color: lightskyblue;
+    font-size: 0.8em;
+}
