@@ -5,12 +5,12 @@
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Endereco
+ * Usuario
  *
- * @ORM\Table(name="endereco", indexes={@ORM\Index(name="fk_endereco_pessoa1_idx", columns={"pessoa_id"})})
+ * @ORM\Table(name="usuario", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"pessoa_id"})})
  * @ORM\Entity
  */
-class Endereco
+class Usuario
 {
     /**
      * @var integer
@@ -24,23 +24,16 @@ class Endereco
     /**
      * @var string
      *
-     * @ORM\Column(name="rua", type="string", length=45, nullable=false)
+     * @ORM\Column(name="email", type="string", length=45, nullable=false)
      */
-    private $rua;
+    private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cidade", type="string", length=45, nullable=false)
+     * @ORM\Column(name="senha", type="string", length=300, nullable=false)
      */
-    private $cidade;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="uf", type="string", length=45, nullable=false)
-     */
-    private $uf;
+    private $senha;
 
     /**
      * @var \Pessoa

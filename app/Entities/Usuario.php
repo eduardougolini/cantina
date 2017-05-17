@@ -2,16 +2,15 @@
 
 namespace App\Entities;
 
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Cliente
+ * Usuario
  *
- * @ORM\Table(name="cliente", uniqueConstraints={@ORM\UniqueConstraint(name="matricula_UNIQUE", columns={"matricula"})}, indexes={@ORM\Index(name="fk_cliente_pessoa1_idx", columns={"pessoa_id"}), @ORM\Index(name="fk_cliente_conta1_idx", columns={"conta_id"})})
+ * @ORM\Table(name="usuario", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"pessoa_id"})})
  * @ORM\Entity
  */
-class Cliente
+class Usuario
 {
     /**
      * @var integer
@@ -25,19 +24,16 @@ class Cliente
     /**
      * @var string
      *
-     * @ORM\Column(name="matricula", type="string", length=45, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="email", type="string", length=45, precision=0, scale=0, nullable=false, unique=false)
      */
-    private $matricula;
+    private $email;
 
     /**
-     * @var \Conta
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Conta")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="conta_id", referencedColumnName="id", nullable=true)
-     * })
+     * @ORM\Column(name="senha", type="string", length=300, precision=0, scale=0, nullable=false, unique=false)
      */
-    private $conta;
+    private $senha;
 
     /**
      * @var \Pessoa
@@ -61,51 +57,51 @@ class Cliente
     }
 
     /**
-     * Set matricula
+     * Set email
      *
-     * @param string $matricula
+     * @param string $email
      *
-     * @return Cliente
+     * @return Usuario
      */
-    public function setMatricula($matricula)
+    public function setEmail($email)
     {
-        $this->matricula = $matricula;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get matricula
+     * Get email
      *
      * @return string
      */
-    public function getMatricula()
+    public function getEmail()
     {
-        return $this->matricula;
+        return $this->email;
     }
 
     /**
-     * Set conta
+     * Set senha
      *
-     * @param \Conta $conta
+     * @param string $senha
      *
-     * @return Cliente
+     * @return Usuario
      */
-    public function setConta(\Conta $conta = null)
+    public function setSenha($senha)
     {
-        $this->conta = $conta;
+        $this->senha = $senha;
 
         return $this;
     }
 
     /**
-     * Get conta
+     * Get senha
      *
-     * @return \Conta
+     * @return string
      */
-    public function getConta()
+    public function getSenha()
     {
-        return $this->conta;
+        return $this->senha;
     }
 
     /**
@@ -113,7 +109,7 @@ class Cliente
      *
      * @param \Pessoa $pessoa
      *
-     * @return Cliente
+     * @return Usuario
      */
     public function setPessoa(\Pessoa $pessoa = null)
     {
