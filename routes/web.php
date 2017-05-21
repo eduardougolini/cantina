@@ -11,11 +11,16 @@
 |
 */
 
-Route::get('/', function() {
+Route::get('/', ['as' => 'dashboard', function() {
     return view('home');
-});
+}])->middleware('auth');
 
-Route::get('/login', function() {
+Route::get('/login', ['as' => 'login', function() {
     return view('login');
-});
+}]);
 
+Route::post('/login/authenticate', ['uses' =>'Auth\LoginController@authenticate']);
+
+Route::get('/registerProduct', function() {
+    return view('registerProduct');
+});
