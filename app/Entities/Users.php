@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="user", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"person_id"})})
+ * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"person_id"})})
  * @ORM\Entity
  */
-class User
+class Users
 {
     /**
      * @var integer

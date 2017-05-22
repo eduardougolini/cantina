@@ -5,12 +5,12 @@
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Usuario
+ * User
  *
- * @ORM\Table(name="usuario", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"pessoa_id"})})
+ * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"person_id"})})
  * @ORM\Entity
  */
-class Usuario
+class Users
 {
     /**
      * @var integer
@@ -31,19 +31,19 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="senha", type="string", length=300, nullable=false)
+     * @ORM\Column(name="password", type="string", length=300, nullable=false)
      */
-    private $senha;
+    private $password;
 
     /**
-     * @var \Pessoa
+     * @var \Person
      *
-     * @ORM\ManyToOne(targetEntity="Pessoa")
+     * @ORM\ManyToOne(targetEntity="Person")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="pessoa_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="person_id", referencedColumnName="id")
      * })
      */
-    private $pessoa;
+    private $person;
 
 
 }
