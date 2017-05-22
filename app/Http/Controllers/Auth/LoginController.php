@@ -40,11 +40,13 @@ class LoginController extends Controller
     }
     
     public function authenticate(Request $request) {
-        $email = $request->get('email');
+        $email = $request->get('usermail');
         $password = $request->get('password');
         
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             return redirect()->intended('dashboard');
+        } else {
+            throw new \Exception("Moio piá, senha tá errada!");
         }
     }
 }
