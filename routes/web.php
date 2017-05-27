@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', ['as' => 'dashboard', function() {
-    return view('home');
-}])->middleware('auth');
+Route::get('/', ['as' => 'dashboard', 'uses' => 'BaseController@home'])->middleware('auth');
 
 Route::get('/login', ['as' => 'login', function() {
     return view('login');
@@ -21,6 +19,8 @@ Route::get('/login', ['as' => 'login', function() {
 
 Route::post('/login/authenticate', ['uses' =>'Auth\LoginController@authenticate']);
 
-Route::get('/registerProduct', function() {
-    return view('registerProduct');
-});
+Route::get('/registerProduct', ['as' => 'registerProduct', 'uses' =>'ProductsController@registerProductView'])->middleware('auth');
+
+Route::get('/accountDetails', ['as' => 'accountDetails', function() {
+    return view('accountDetails');
+}])->middleware('auth');;

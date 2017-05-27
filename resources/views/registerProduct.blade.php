@@ -1,18 +1,27 @@
 
-<head>
-    <title>Cantina - Registro de Produto</title>
-    <link href="css/registerProduct.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-</head>
+@extends('layouts.base')
 
-<body>
+@section('title', 'Registro de produtos')
+@section('head')
+    <link href="css/registerProduct.css" rel="stylesheet" type="text/css"/>
+@endsection
+
+@section('content')
     <form class="registro">
-        <h1>Registro de Produtos</h1>
-        <input class="name" name="name" type="name" placeholder="Nome" />
-        <input class="description" name="description" type="description" placeholder="Descrição"/>
-        <input class="value" name="value" type="value" placeholder="Valor"/>
+          <div class="name mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="sample3">
+            <label class="mdl-textfield__label" for="sample3">Nome...</label>
+          </div>
+          <div class="description name mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="sample3">
+            <label class="mdl-textfield__label" for="sample3">Descrição...</label>
+          </div>
+           <div class="value mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="value" id="sample3">
+            <label class="mdl-textfield__label" for="sample3">Valor...</label>
+          </div>
         <input class="expirationDate" name="expirationDate" type="date" value="Validade"/>
-        <input class="submit" name="submit" type="submit" value="Cadastrar"/>
-        <a class="forgotPassword">Registrar outro produto?</a>
+        <input class="picture" name="picture" type="file" accept="image/*"/>
+        <a class="submit mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Cadastrar</a>
     </form>
-</body>
+@endsection

@@ -1,0 +1,15 @@
+body {
+    background-color: #f5f5f5;
+    font-family: 'Roboto';
+}
+
+.accountDetails {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.return{
+    margin-top: 15px !important;
+    margin-left: 15px !important;
+}

@@ -6,22 +6,26 @@ body {
 .registro {
     width: 300px;
     margin: auto;
-    margin-top: 12%;
     text-align: center;
 }
 
 .registro input {
-    margin-top: 1em;
     width: 300px;
     height: 2em;
     text-align: center;
 }
 .registro .expirationDate{
+    margin-top: 0.5em;
     width: 150px;
 }
 
-.registro .submit {
+.registro .submit { 
+    margin-top: 0.5em;
     width: 150px;
+}
+
+.picture{
+    margin-top: 0.5em;
 }
 
 .registro .forgotPassword {
@@ -30,4 +34,9 @@ body {
     display: block;
     color: lightskyblue;
     font-size: 0.8em;
+}
+
+.return{
+    margin-top: 15px !important;
+    margin-left: 15px !important;
 }
