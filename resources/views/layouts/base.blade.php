@@ -76,7 +76,7 @@
             </header>
             <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
                 <header class="demo-drawer-header">
-                    <img src="css/images/user.jpg" class="demo-avatar">
+                    <img src="css/images/user.png" class="demo-avatar">
                     <div class="demo-avatar-dropdown">
                         <span>{{ $user->email }}</span>
                         <div class="mdl-layout-spacer"></div>
