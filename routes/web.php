@@ -17,6 +17,8 @@ Route::get('/login', ['as' => 'login', function() {
     return view('login');
 }]);
 
+Route::get('/sql', ['uses' => 'BaseController@teste']);
+
 Route::post('/login/authenticate', ['uses' =>'Auth\LoginController@authenticate']);
 
 Route::get('/registerProvider', ['as' => 'registerProvider', 'uses' =>'ProvidersController@registerProviderView'])->middleware('auth');
@@ -24,4 +26,4 @@ Route::get('/registerProduct', ['as' => 'registerProduct', 'uses' =>'ProductsCon
 
 Route::get('/accountDetails', ['as' => 'accountDetails', function() {
     return view('accountDetails');
-}])->middleware('auth');;
+}])->middleware('auth');
