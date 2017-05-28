@@ -6,8 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Doctrine\ORM\EntityManager;
 
-class AccountDetailsController extends Controller
-{
+class AccountDetailsController extends Controller {
+    
+    private $em;
+    
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
+    
     /**
      * Show the profile for the given user.
      *
@@ -17,11 +23,16 @@ class AccountDetailsController extends Controller
     {
         $user = Auth::user();
 
-        $em = new EntityManager();
-        $users = $em->createQuery(
-                "SELECT * FROM users");
+        $userInfo = $this->em->createQuery(
+                "SELECT p "
+                . "FROM Cantina:Users u "
+                . "JOIN Cantina:Person p "
+                    . "WITH p.id = u.person "
+                . "WHERE u = :userId"
+            )->setParameter('userId', $user->id)
+            ->getOneOrNullResult();
         
-        return $users;
+        return view('accountDetails', ['user' => $userInfo]);
         
         
     }

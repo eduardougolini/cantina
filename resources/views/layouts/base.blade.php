@@ -78,7 +78,11 @@
                 <header class="demo-drawer-header">
                     <img src="css/images/user.png" class="demo-avatar">
                     <div class="demo-avatar-dropdown">
-                        <span>{{ $user->email }}</span>
+                        @if (method_exists($user, 'getEmail'))
+                            <span>{{ $user->getEmail() }}</span>
+                        @else
+                            <span>{{ $user->email }}</span>
+                        @endif
                         <div class="mdl-layout-spacer"></div>
                         <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                             <i class="material-icons" role="presentation">arrow_drop_down</i>

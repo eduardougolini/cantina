@@ -1,15 +1,16 @@
+@extends('layouts.base')
 
-<head>
-    <title>Cantina - Registro de Produto</title>
+@section('title', 'Seus dados')
+
+@section('head')
     <link href="css/accountDetails.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link href="css/mdl/1.3.0/material.cyan-light_blue.min.css" rel="stylesheet" type="text/css"/>
-    <script src="js/vendor/mdl/1.3.0/material.min.js" type="text/javascript"></script>
-</head>
+@endsection
 
-<body>
-    <a class="return mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="{{ URL::route('dashboard') }}">Página Principal</a>
-    <h1 style="text-align: center;">Detalhes Da Conta</h1>
+@section('sidebar')
+    @parent
+@endsection
+        
+@section('content')
     <table class=" accountDetails mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
             <tr>
@@ -24,15 +25,18 @@
                 <th class="mdl-data-table__cell--non-numeric">Rua</th>
                 <th class="mdl-data-table__cell--non-numeric">Cidade</th>
                 <th class="mdl-data-table__cell--non-numeric">Estado</th>  
-                  
-
-                                
-
-                
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">{{ $user->getName() }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ $user->getBirth() }}</td>
+                <td class="mdl-data-table__cell--non-numeric"></td>
+                <td class="mdl-data-table__cell--non-numeric">{{ $user->getFone() }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ $user->getEmail() }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ $user->getCpf() }}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{ $user->getRg() }}</td>
+            </tr>
         </tbody>
     </table>
-
-</body>
+@endsection
