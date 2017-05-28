@@ -1,0 +1,28 @@
+.providersForm {
+    width: 60em;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.providersForm .left {
+    float: left;
+    position: relative;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.providersForm .right {
+    float: right;
+    position: relative;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.providersForm .submit {
+    margin: auto;
+    display: block;
+    margin-top: 0.5em;
+    width: 150px;
+}
