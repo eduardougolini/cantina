@@ -1,0 +1,17 @@
+{
+  "name": "Polymer",
+  "homepage": "https://github.com/eduardougolini/cantina",
+  "authors": [
+    "Eduardo Ugolini <edu.ugolini2@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
