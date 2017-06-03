@@ -16,18 +16,18 @@
             <span>+</span>
         </div>
         <div class="name mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" id="name">
+          <input class="mdl-textfield__input" name="name" type="text" />
           <label class="mdl-textfield__label" for="name">Nome...</label>
         </div>
         <div class="description name mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="description">
+            <input class="mdl-textfield__input" name="description" type="text" />
           <label class="mdl-textfield__label" for="description">Descrição...</label>
         </div>
          <div class="value mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" id="value">
+          <input class="mdl-textfield__input" name="value" type="text" />
           <label class="mdl-textfield__label" for="value">Valor...</label>
         </div>
         <!--<input class="expirationDate" name="expirationDate" type="date" value="Validade"/>-->
-        <a class="submit mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Cadastrar</a>
+        <a class="submit mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="{{ URL::route('registerNewProduct') }}">Cadastrar</a>
     </form>
 @endsection

@@ -16,4 +16,23 @@ $(document).ready(function() {
             reader.readAsDataURL(this.files[0]);
         }
     });
+    
+    $('.register .submit').click(function(e) {
+        e.preventDefault();
+        
+        var saveRoute = $(this).attr('href');
+        var token = $('.register input[name=_token]').val();
+        var productName = $('.register input[name=name]').val();
+        var productDescription = $('.register input[name=description]').val();
+        var productValue = $('.register input[name=value]').val();
+        
+        $.post(saveRoute, {
+            _token: token,
+            name: productName,
+            description: productDescription,
+            value: productValue
+        }, function(data) {
+            debugger;
+        });
+    });
 });

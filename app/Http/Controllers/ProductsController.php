@@ -4,8 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Entities\Product;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManager;
 
 class ProductsController extends Controller {
+    
+    private $em;
+    
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
+    
     /**
      * Show the profile for the given user.
      *
@@ -15,4 +25,18 @@ class ProductsController extends Controller {
         $user = Auth::user();
         return view('registerProduct', ['user' => $user]);
     }   
+    
+    public function registerNewProduct(Request $request) {
+        $name = $request->get('name');
+        $description = $request->get('description');
+        $value = $request->get('value');
+        
+        $product = new Product();
+        $product->setName($name);
+        $product->setDescription($description);
+        $product->setValue($value);
+        
+        $this->em->persist($product);
+        $this->em->flush();
+    }
 }
