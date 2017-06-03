@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Product
  *
- * @ORM\Table(name="product", uniqueConstraints={@ORM\UniqueConstraint(name="nome_UNIQUE", columns={"name"})}, indexes={@ORM\Index(name="fk_produto_Fornecedor1_idx", columns={"provider_id"})})
+ * @ORM\Table(name="product", uniqueConstraints={@ORM\UniqueConstraint(name="nome_UNIQUE", columns={"name"})}, indexes={@ORM\Index(name="fk_produto_Fornecedor1_idx", columns={"provider_id"}), @ORM\Index(name="fk_product_image1_idx", columns={"image_id"})})
  * @ORM\Entity
  */
 class Product
@@ -41,6 +41,16 @@ class Product
      * @ORM\Column(name="value", type="decimal", precision=10, scale=2, nullable=false)
      */
     private $value;
+
+    /**
+     * @var \Image
+     *
+     * @ORM\ManyToOne(targetEntity="Image")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     * })
+     */
+    private $image;
 
     /**
      * @var \Provider

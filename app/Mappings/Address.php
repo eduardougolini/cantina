@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Address
  *
- * @ORM\Table(name="address", indexes={@ORM\Index(name="fk_endereco_pessoa1_idx", columns={"person_id"})})
+ * @ORM\Table(name="address", indexes={@ORM\Index(name="fk_address_person1_idx", columns={"person_id"}), @ORM\Index(name="fk_address_provider1_idx", columns={"provider_id"})})
  * @ORM\Entity
  */
 class Address
@@ -51,6 +51,16 @@ class Address
      * })
      */
     private $person;
+
+    /**
+     * @var \Provider
+     *
+     * @ORM\ManyToOne(targetEntity="Provider")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="provider_id", referencedColumnName="id")
+     * })
+     */
+    private $provider;
 
 
 }

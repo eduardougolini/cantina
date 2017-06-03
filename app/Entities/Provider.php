@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Provider
  *
- * @ORM\Table(name="provider", indexes={@ORM\Index(name="fk_Fornecedor_endereco1_idx", columns={"address_id"})})
+ * @ORM\Table(name="provider")
  * @ORM\Entity
  */
 class Provider
@@ -41,16 +41,6 @@ class Provider
      * @ORM\Column(name="email", type="string", length=45, precision=0, scale=0, nullable=false, unique=false)
      */
     private $email;
-
-    /**
-     * @var \Address
-     *
-     * @ORM\ManyToOne(targetEntity="Address")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="address_id", referencedColumnName="id", nullable=true)
-     * })
-     */
-    private $address;
 
 
     /**
@@ -133,30 +123,6 @@ class Provider
     public function getEmail()
     {
         return $this->email;
-    }
-
-    /**
-     * Set address
-     *
-     * @param \Address $address
-     *
-     * @return Provider
-     */
-    public function setAddress(\Address $address = null)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return \Address
-     */
-    public function getAddress()
-    {
-        return $this->address;
     }
 }
 

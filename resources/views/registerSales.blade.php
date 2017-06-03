@@ -24,4 +24,12 @@
     </paper-listbox>
 </paper-dropdown-menu>
 
+<paper-dropdown-menu label="Produtos">
+    <paper-listbox slot="dropdown-content" selected="0">
+        @foreach ($products as $product)
+           <paper-item>{{ $product->id }}</paper-item>
+        @endforeach
+
+    </paper-listbox>
+</paper-dropdown-menu>
 @endsection

@@ -29,7 +29,7 @@ return [
                 'Cantina' => 'App\Entities'
             ],
             'paths'         => [
-                base_path('App\Mappings')
+                base_path('app/Mappings')
             ],
             'repository'    => Doctrine\ORM\EntityRepository::class,
             'proxies'       => [

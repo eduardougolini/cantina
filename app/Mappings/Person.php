@@ -45,9 +45,9 @@ class Person
     /**
      * @var string
      *
-     * @ORM\Column(name="fone", type="string", length=45, nullable=false)
+     * @ORM\Column(name="phone", type="string", length=45, nullable=false)
      */
-    private $fone;
+    private $phone;
 
     /**
      * @var string

@@ -1,0 +1,10 @@
+.itens{
+    width: 15em;
+    margin-top: 5em;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.left{
+    border-right: 1px solid black;
+}

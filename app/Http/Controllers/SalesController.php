@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Doctrine\ORM\EntityManager;
 
 /**
  * Description of SalesController
@@ -12,9 +13,23 @@ use Illuminate\Support\Facades\Auth;
  */
 class SalesController extends Controller {
     
-    public function registerSaleView() {
-        $user = Auth::user();
-        return view('registerSales', ['user' => $user]);
+    private $em;
+    
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
     }
     
+    public function registerSaleView() {
+        $user = Auth::user();
+
+        $products = $this->em->createQuery(
+                "SELECT p "
+                . "FROM Cantina:Product p "
+            )
+            ->getResult();
+        
+        return view('registerSales', ['user' => $user, 'products' => $products]);
+        
+        
+    }
 }

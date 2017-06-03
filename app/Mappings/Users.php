@@ -5,9 +5,9 @@
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * User
+ * Users
  *
- * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"person_id"})})
+ * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"person_id"}), @ORM\Index(name="fk_users_image1_idx", columns={"image_id"})})
  * @ORM\Entity
  */
 class Users
@@ -34,6 +34,16 @@ class Users
      * @ORM\Column(name="password", type="string", length=300, nullable=false)
      */
     private $password;
+
+    /**
+     * @var \Image
+     *
+     * @ORM\ManyToOne(targetEntity="Image")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     * })
+     */
+    private $image;
 
     /**
      * @var \Person

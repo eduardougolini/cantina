@@ -5,9 +5,9 @@ namespace App\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * User
+ * Users
  *
- * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"person_id"})})
+ * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"person_id"}), @ORM\Index(name="fk_users_image1_idx", columns={"image_id"})})
  * @ORM\Entity
  */
 class Users
@@ -36,6 +36,16 @@ class Users
     private $password;
 
     /**
+     * @var \Image
+     *
+     * @ORM\ManyToOne(targetEntity="Image")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="image_id", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $image;
+
+    /**
      * @var \Person
      *
      * @ORM\ManyToOne(targetEntity="Person")
@@ -61,7 +71,7 @@ class Users
      *
      * @param string $email
      *
-     * @return User
+     * @return Users
      */
     public function setEmail($email)
     {
@@ -85,7 +95,7 @@ class Users
      *
      * @param string $password
      *
-     * @return User
+     * @return Users
      */
     public function setPassword($password)
     {
@@ -105,11 +115,35 @@ class Users
     }
 
     /**
+     * Set image
+     *
+     * @param \Image $image
+     *
+     * @return Users
+     */
+    public function setImage(\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
      * Set person
      *
      * @param \Person $person
      *
-     * @return User
+     * @return Users
      */
     public function setPerson(\Person $person = null)
     {
