@@ -31,9 +31,9 @@ class Provider
     /**
      * @var string
      *
-     * @ORM\Column(name="fone", type="string", length=45, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="phone", type="string", length=45, precision=0, scale=0, nullable=false, unique=false)
      */
-    private $fone;
+    private $phone;
 
     /**
      * @var string
@@ -78,27 +78,27 @@ class Provider
     }
 
     /**
-     * Set fone
+     * Set phone
      *
-     * @param string $fone
+     * @param string $phone
      *
      * @return Provider
      */
-    public function setFone($fone)
+    public function setPhone($phone)
     {
-        $this->fone = $fone;
+        $this->phone = $phone;
 
         return $this;
     }
 
     /**
-     * Get fone
+     * Get phone
      *
      * @return string
      */
-    public function getFone()
+    public function getPhone()
     {
-        return $this->fone;
+        return $this->phone;
     }
 
     /**

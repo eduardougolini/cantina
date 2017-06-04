@@ -43,6 +43,27 @@ class Address
     private $state;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="district", type="string", length=45, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $district;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cep", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $cep;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="number", type="integer", precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $number;
+
+    /**
      * @var \Person
      *
      * @ORM\ManyToOne(targetEntity="Person")
@@ -143,6 +164,78 @@ class Address
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * Set district
+     *
+     * @param string $district
+     *
+     * @return Address
+     */
+    public function setDistrict($district)
+    {
+        $this->district = $district;
+
+        return $this;
+    }
+
+    /**
+     * Get district
+     *
+     * @return string
+     */
+    public function getDistrict()
+    {
+        return $this->district;
+    }
+
+    /**
+     * Set cep
+     *
+     * @param integer $cep
+     *
+     * @return Address
+     */
+    public function setCep($cep)
+    {
+        $this->cep = $cep;
+
+        return $this;
+    }
+
+    /**
+     * Get cep
+     *
+     * @return integer
+     */
+    public function getCep()
+    {
+        return $this->cep;
+    }
+
+    /**
+     * Set number
+     *
+     * @param integer $number
+     *
+     * @return Address
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    /**
+     * Get number
+     *
+     * @return integer
+     */
+    public function getNumber()
+    {
+        return $this->number;
     }
 
     /**

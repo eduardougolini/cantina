@@ -43,6 +43,27 @@ class Address
     private $state;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="district", type="string", length=45, nullable=false)
+     */
+    private $district;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cep", type="integer", nullable=false)
+     */
+    private $cep;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="number", type="integer", nullable=true)
+     */
+    private $number;
+
+    /**
      * @var \Person
      *
      * @ORM\ManyToOne(targetEntity="Person")
