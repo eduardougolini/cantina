@@ -90,7 +90,7 @@ class Client
      *
      * @return Client
      */
-    public function setAccount(\Account $account = null)
+    public function setAccount(Account $account = null)
     {
         $this->account = $account;
 
@@ -114,7 +114,7 @@ class Client
      *
      * @return Client
      */
-    public function setPerson(\Person $person = null)
+    public function setPerson(Person $person = null)
     {
         $this->person = $person;
 

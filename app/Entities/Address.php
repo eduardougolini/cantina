@@ -245,7 +245,7 @@ class Address
      *
      * @return Address
      */
-    public function setPerson(\Person $person = null)
+    public function setPerson(Person $person = null)
     {
         $this->person = $person;
 
@@ -269,7 +269,7 @@ class Address
      *
      * @return Address
      */
-    public function setProvider(\Provider $provider = null)
+    public function setProvider(Provider $provider = null)
     {
         $this->provider = $provider;
 

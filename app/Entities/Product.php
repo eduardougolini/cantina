@@ -182,7 +182,7 @@ class Product
      *
      * @return Product
      */
-    public function setImage(\Image $image = null)
+    public function setImage(Image $image = null)
     {
         $this->image = $image;
 
@@ -206,7 +206,7 @@ class Product
      *
      * @return Product
      */
-    public function setProvider(\Provider $provider = null)
+    public function setProvider(Provider $provider = null)
     {
         $this->provider = $provider;
 
@@ -230,7 +230,7 @@ class Product
      *
      * @return Product
      */
-    public function addSale(\Sale $sale)
+    public function addSale(Sale $sale)
     {
         $this->sale[] = $sale;
 
@@ -242,7 +242,7 @@ class Product
      *
      * @param \Sale $sale
      */
-    public function removeSale(\Sale $sale)
+    public function removeSale(Sale $sale)
     {
         $this->sale->removeElement($sale);
     }
@@ -264,7 +264,7 @@ class Product
      *
      * @return Product
      */
-    public function addStock(\Stock $stock)
+    public function addStock(Stock $stock)
     {
         $this->stock[] = $stock;
 
@@ -276,7 +276,7 @@ class Product
      *
      * @param \Stock $stock
      */
-    public function removeStock(\Stock $stock)
+    public function removeStock(Stock $stock)
     {
         $this->stock->removeElement($stock);
     }

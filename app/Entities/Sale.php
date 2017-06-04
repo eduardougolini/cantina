@@ -133,7 +133,7 @@ class Sale
      *
      * @return Sale
      */
-    public function setClient(\Client $client = null)
+    public function setClient(Client $client = null)
     {
         $this->client = $client;
 
@@ -157,7 +157,7 @@ class Sale
      *
      * @return Sale
      */
-    public function addProduct(\Product $product)
+    public function addProduct(Product $product)
     {
         $this->product[] = $product;
 
@@ -169,7 +169,7 @@ class Sale
      *
      * @param \Product $product
      */
-    public function removeProduct(\Product $product)
+    public function removeProduct(Product $product)
     {
         $this->product->removeElement($product);
     }

@@ -121,7 +121,7 @@ class Users
      *
      * @return Users
      */
-    public function setImage(\Image $image = null)
+    public function setImage(Image $image = null)
     {
         $this->image = $image;
 
@@ -145,7 +145,7 @@ class Users
      *
      * @return Users
      */
-    public function setPerson(\Person $person = null)
+    public function setPerson(Person $person = null)
     {
         $this->person = $person;
 

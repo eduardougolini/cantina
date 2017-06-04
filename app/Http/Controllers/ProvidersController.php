@@ -6,9 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
-use App\Entities\Address;
 use App\Entities\Provider;
-
+use App\Entities\Address;
 /**
  * Description of ProvidersController
  *
@@ -36,6 +35,7 @@ class ProvidersController extends Controller{
         $state = $request->get('state');
         $city = $request->get('city');
         $cep = $request->get('cep');
+        $number = $request->get('number');
         
         $provider = new Provider();
         $provider->setName($name);

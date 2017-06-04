@@ -80,7 +80,7 @@ class Employee
      *
      * @return Employee
      */
-    public function setPerson(\Person $person = null)
+    public function setPerson(Person $person = null)
     {
         $this->person = $person;
 

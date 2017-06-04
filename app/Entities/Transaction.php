@@ -152,7 +152,7 @@ class Transaction
      *
      * @return Transaction
      */
-    public function setAccount(\Account $account = null)
+    public function setAccount(Account $account = null)
     {
         $this->account = $account;
 
@@ -176,7 +176,7 @@ class Transaction
      *
      * @return Transaction
      */
-    public function setSale(\Sale $sale = null)
+    public function setSale(Sale $sale = null)
     {
         $this->sale = $sale;
 
