@@ -24,7 +24,7 @@ $(document).ready(function () {
                 ids: jsonIdArray
             },
             success: function(data) {
-                console.log('deu boa');
+                window.location.reload();
             }
         });
     });

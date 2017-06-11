@@ -5,8 +5,14 @@
 
 .tableBox table {
     margin: auto;
+    width: 90%;
 }
 
-button {
-    margin-left: 60px !important;
+.addButton {
+    margin-left: 5% !important;
+    margin-right: 0 !important;
+}
+
+.deleteButton {
+    margin-left: 1em !important;
 }

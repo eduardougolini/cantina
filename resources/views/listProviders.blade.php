@@ -47,6 +47,9 @@
         </table>
     </div>
         
+  <button class="addButton mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+      <a class="material-icons" href="{{ URL::route('registerProvider') }}">add</a>
+  </button>
   <button class="deleteButton mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--red-500">
     <i class="material-icons">delete</i>
   </button>
