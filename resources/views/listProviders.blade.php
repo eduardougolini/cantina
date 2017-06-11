@@ -5,6 +5,7 @@
 @section('head')
     <script src="js/vendor/jquery-3.2.1.min.js" type="text/javascript"></script>
     <link href="css/listProviders.css" rel="stylesheet" type="text/css"/>
+    <script src="js/listProviders.js" type="text/javascript"></script>
 @endsection
         
 @section('sidebar')
@@ -12,6 +13,7 @@
 @endsection
 
 @section('content')
+    <span class="_token" hidden>{{ csrf_token() }}</span>
     <div class="tableBox">
         <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
             <thead>
@@ -29,8 +31,8 @@
             </thead>
             <tbody>
                 @foreach ($providers as $provider)
-                    <tr>
-                      <td class="mdl-data-table__cell--non-numeric" provider_id="{{ $provider['id'] }}">{{ $provider['name'] }}</td>
+                    <tr class="provider" provider_id="{{ $provider['id'] }}">
+                      <td class="mdl-data-table__cell--non-numeric">{{ $provider['name'] }}</td>
                       <td>{{ $provider['email'] }}</td>
                       <td>{{ $provider['phone'] }}</td>
                       <td>{{ $provider['cep'] }}</td>
@@ -45,7 +47,7 @@
         </table>
     </div>
         
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--red-500">
+  <button class="deleteButton mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--red-500">
     <i class="material-icons">delete</i>
   </button>
 

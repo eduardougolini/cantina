@@ -34,15 +34,6 @@ class ProvidersController extends Controller{
         return view('listProviders', ['user' => $user, 'providers' => $providers]);
     }
     
-    public function deleteProviders(Request $request){
-    
-        $id = $request->get('id');
-        $provider = $this->em->getRepository('Cantina:Provider')->find($id);
-        $this->em->remove($provider);
-        $this->em->flush();
-        
-    }
-    
     public function registerProviderView() {
         $user = Auth::user();
         return view('registerProviders', ['user' => $user]);
@@ -74,6 +65,22 @@ class ProvidersController extends Controller{
         $address->setDistrict($district);
         $address->setCep($cep);
         $this->em->persist($address);
+        
+        $this->em->flush();
+    }
+    
+    public function deleteProviders(Request $request) {
+        $ids = json_decode($request->get('ids'));
+        
+        foreach ($ids as $id) {
+            $provider = $this->em->getRepository('Cantina:Provider')->find($id);
+            $address = $this->em->getRepository('Cantina:Address')->findOneBy([
+                'provider'  =>  $provider
+            ]);
+            
+            $this->em->remove($address);
+            $this->em->remove($provider);
+        }
         
         $this->em->flush();
     }
