@@ -1,0 +1,12 @@
+.tableBox {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.tableBox table {
+    margin: auto;
+}
+
+button {
+    margin-left: 60px !important;
+}

@@ -27,7 +27,15 @@ $(document).ready(function() {
            street: street,
            number: number
         }, function(data) {
-            debugger;
+            $('.providersForm input[name=name]').val('');
+            $('.providersForm input[name=phone]').val('');
+            $('.providersForm input[name=email]').val('');
+            $('.providersForm input[name=cep]').val('');
+            $('.providersForm input[name=state]').val('');
+            $('.providersForm input[name=city]').val('');
+            $('.providersForm input[name=district]').val('');
+            $('.providersForm input[name=street]').val('');
+            $('.providersForm input[name=number]').val('');
         });
     });
     

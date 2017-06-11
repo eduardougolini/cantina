@@ -28,3 +28,5 @@ Route::post('/registerNewProduct', ['as' => 'registerNewProduct', 'uses' =>'Prod
 Route::get('/registerSale', ['as' => 'registerSale', 'uses' =>'SalesController@registerSaleView'])->middleware('auth');
 
 Route::get('/accountDetails', ['as' => 'accountDetails', 'uses' => 'AccountDetailsController@showDetails'])->middleware('auth');
+
+Route::get('/listProviders', ['as' => 'listProviders', 'uses' => 'ProvidersController@listProviders'])->middleware('auth');
