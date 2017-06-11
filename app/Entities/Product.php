@@ -43,6 +43,27 @@ class Product
     private $value;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="amount", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $amount;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_entry", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $dateEntry;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="validity", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $validity;
+
+    /**
      * @var \Image
      *
      * @ORM\ManyToOne(targetEntity="Image")
@@ -70,27 +91,11 @@ class Product
     private $sale;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Stock", inversedBy="product")
-     * @ORM\JoinTable(name="stock_has_product",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=true)
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="stock_id", referencedColumnName="id", nullable=true)
-     *   }
-     * )
-     */
-    private $stock;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->sale = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->stock = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -176,6 +181,78 @@ class Product
     }
 
     /**
+     * Set amount
+     *
+     * @param integer $amount
+     *
+     * @return Product
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set dateEntry
+     *
+     * @param \DateTime $dateEntry
+     *
+     * @return Product
+     */
+    public function setDateEntry($dateEntry)
+    {
+        $this->dateEntry = $dateEntry;
+
+        return $this;
+    }
+
+    /**
+     * Get dateEntry
+     *
+     * @return \DateTime
+     */
+    public function getDateEntry()
+    {
+        return $this->dateEntry;
+    }
+
+    /**
+     * Set validity
+     *
+     * @param \DateTime $validity
+     *
+     * @return Product
+     */
+    public function setValidity($validity)
+    {
+        $this->validity = $validity;
+
+        return $this;
+    }
+
+    /**
+     * Get validity
+     *
+     * @return \DateTime
+     */
+    public function getValidity()
+    {
+        return $this->validity;
+    }
+
+    /**
      * Set image
      *
      * @param \Image $image
@@ -255,40 +332,6 @@ class Product
     public function getSale()
     {
         return $this->sale;
-    }
-
-    /**
-     * Add stock
-     *
-     * @param \Stock $stock
-     *
-     * @return Product
-     */
-    public function addStock(Stock $stock)
-    {
-        $this->stock[] = $stock;
-
-        return $this;
-    }
-
-    /**
-     * Remove stock
-     *
-     * @param \Stock $stock
-     */
-    public function removeStock(Stock $stock)
-    {
-        $this->stock->removeElement($stock);
-    }
-
-    /**
-     * Get stock
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getStock()
-    {
-        return $this->stock;
     }
 }
 

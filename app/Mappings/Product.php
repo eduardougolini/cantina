@@ -43,6 +43,27 @@ class Product
     private $value;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="amount", type="integer", nullable=false)
+     */
+    private $amount;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_entry", type="datetime", nullable=false)
+     */
+    private $dateEntry;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="validity", type="datetime", nullable=false)
+     */
+    private $validity;
+
+    /**
      * @var \Image
      *
      * @ORM\ManyToOne(targetEntity="Image")
@@ -70,27 +91,11 @@ class Product
     private $sale;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Stock", inversedBy="product")
-     * @ORM\JoinTable(name="stock_has_product",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="stock_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $stock;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->sale = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->stock = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 }
