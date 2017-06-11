@@ -25,7 +25,7 @@ class ProvidersController extends Controller{
         $user = Auth::user();
         
         $providers = $this->em->createQuery(
-                "SELECT p.name, p.phone, p.email, a.street, a.city, a.state, a.district, a.cep, a.number "
+                "SELECT p.id, p.name, p.phone, p.email, a.street, a.city, a.state, a.district, a.cep, a.number "
                 . "FROM Cantina:Provider p "
                 . "JOIN Cantina:Address a "
                     . "WITH p.id = a.provider ")

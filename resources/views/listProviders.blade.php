@@ -29,18 +29,18 @@
             </thead>
             <tbody>
                 @foreach ($providers as $provider)
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric">{{ $provider['name'] }}</td>
-                <td>{{$provider['email'] }}</td>
-                <td>{{$provider['phone'] }}</td>
-                <td>{{$provider['cep'] }}</td>
-                <td>{{$provider['street'] }}</td>
-                <td>{{$provider['number'] }}</td>
-                <td>{{$provider['district'] }}</td>
-                <td>{{$provider['city'] }}</td>
-                <td>{{$provider['state'] }}</td>
-              </tr>
-              @endforeach
+                    <tr>
+                      <td class="mdl-data-table__cell--non-numeric" provider_id="{{ $provider['id'] }}">{{ $provider['name'] }}</td>
+                      <td>{{ $provider['email'] }}</td>
+                      <td>{{ $provider['phone'] }}</td>
+                      <td>{{ $provider['cep'] }}</td>
+                      <td>{{ $provider['street'] }}</td>
+                      <td>{{ $provider['number'] }}</td>
+                      <td>{{ $provider['district'] }}</td>
+                      <td>{{ $provider['city'] }}</td>
+                      <td>{{ $provider['state'] }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
