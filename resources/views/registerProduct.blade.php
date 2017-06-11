@@ -11,6 +11,7 @@
     <link rel="import" href="Polymer/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
     <link rel="import" href="Polymer/bower_components/paper-listbox/paper-listbox.html">
     <link rel="import" href="Polymer/bower_components/paper-item/paper-item.html">
+    <link rel="import" href="Polymer/bower_components/app-datepicker/app-datepicker.html">
 @endsection
 
 @section('content')
@@ -40,7 +41,12 @@
                 @endforeach
             </paper-listbox>
         </paper-dropdown-menu>
-        <!--<input class="expirationDate" name="expirationDate" type="date" value="Validade"/>-->
+        <dom-bind>
+            <template is="dom-bind" id="datepickers">
+                <app-datepicker  class="entryDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="vertical"></app-datepicker>
+                <app-datepicker  class="expirationDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="vertical" theme="goog-theme"></app-datepicker>
+            </template>
+        </dom-bind>
         <a class="submit mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="{{ URL::route('registerNewProduct') }}">Cadastrar</a>
     </form>
 @endsection

@@ -1,5 +1,7 @@
 $(document).ready(function() {
    
+   var datepickers = document.querySelector('dom-bind');
+   
     $('.register .imageInput').click(function() {
         $('.register input.picture').click();
     });
@@ -35,4 +37,9 @@ $(document).ready(function() {
             debugger;
         });
     });
+    
+    datepickers._onSelectedDateChanged = function(ev) {
+        var _value = ev.detail.value;
+        $(ev.target).attr('date', _value);
+    };
 });
