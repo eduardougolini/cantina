@@ -23,7 +23,13 @@ class ProductsController extends Controller {
      */
     public function registerProductView() {
         $user = Auth::user();
-        return view('registerProduct', ['user' => $user]);
+        
+        $providers = $this->em->getRepository('Cantina:Provider')->findAll();
+        
+        return view('registerProduct', [
+            'user' => $user, 
+            'providers' => $providers
+        ]);
     }   
     
     public function registerNewProduct(Request $request) {
