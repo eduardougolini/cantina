@@ -27,12 +27,20 @@ $(document).ready(function() {
         var productName = $('.register input[name=name]').val();
         var productDescription = $('.register input[name=description]').val();
         var productValue = $('.register input[name=value]').val();
+        var productAmount = $('.register input[name=amount]').val();
+        var providerId = $('.providersSelect paper-item[aria-selected=true]').attr('value');
+        var productEntryDate = $('.entryDate').attr('date');
+        var productValidityDate = $('.expirationDate').attr('date');
         
         $.post(saveRoute, {
             _token: token,
             name: productName,
             description: productDescription,
-            value: productValue
+            value: productValue,
+            amount: productAmount,
+            providerId: providerId,
+            entryDate: productEntryDate,
+            validityDate: productValidityDate
         }, function(data) {
             debugger;
         });

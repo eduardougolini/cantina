@@ -36,11 +36,25 @@ class ProductsController extends Controller {
         $name = $request->get('name');
         $description = $request->get('description');
         $value = $request->get('value');
+        $amount = $request->get('amount');
+        $providerId = $request->get('providerId');
+        $entryDate = $request->get('entryDate');
+        $validityDate = $request->get('validityDate');
+        
+        if (! $providerId) {
+            throw new \Exception('Faltou adicionar o id do fornecedor');
+        }
+        
+        $provider = $this->em->getRepository('Cantina:Provider')->find($providerId);
         
         $product = new Product();
         $product->setName($name);
         $product->setDescription($description);
         $product->setValue($value);
+        $product->setAmount($amount);
+        $product->setProvider($provider);
+        $product->setDateEntry(new \DateTime($entryDate));
+        $product->setValidity(new \DateTime($validityDate));
         
         $this->em->persist($product);
         $this->em->flush();

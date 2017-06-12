@@ -22,16 +22,20 @@
             <span>+</span>
         </div>
         <div class="name mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" name="name" type="text" />
-          <label class="mdl-textfield__label" for="name">Nome...</label>
+            <input class="mdl-textfield__input" name="name" type="text" />
+            <label class="mdl-textfield__label" for="name">Nome...</label>
         </div>
         <div class="description name mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" name="description" type="text" />
-          <label class="mdl-textfield__label" for="description">Descrição...</label>
+            <label class="mdl-textfield__label" for="description">Descrição...</label>
         </div>
-         <div class="value mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" name="value" type="text" />
-          <label class="mdl-textfield__label" for="value">Valor...</label>
+        <div class="value mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="value" type="number" min="0" />
+            <label class="mdl-textfield__label" for="value">Valor...</label>
+        </div>
+        <div class="amount mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="amount" type="number" min="1" />
+            <label class="mdl-textfield__label" for="amount">Quantidade...</label>
         </div>
         <paper-dropdown-menu class="providersSelect" label="Fornecedor">
             <paper-listbox slot="dropdown-content" selected="0">
