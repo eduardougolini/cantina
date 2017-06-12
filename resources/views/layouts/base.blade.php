@@ -97,7 +97,7 @@
                 <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
                     <a class="mdl-navigation__link" href="{{ URL::route('dashboard') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Página Principal</a>
                     <a class="mdl-navigation__link" href="{{ URL::route('listProviders') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_shipping</i>Fornecedores</a>
-                    <a class="mdl-navigation__link" href="{{ URL::route('registerProduct') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Produtos</a>
+                    <a class="mdl-navigation__link" href="{{ URL::route('listProducts') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Produtos</a>
                     <a class="mdl-navigation__link" href="{{ URL::route('registerSale') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Vendas</a>
                     <div class="mdl-layout-spacer"></div>
                     <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>

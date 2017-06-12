@@ -59,4 +59,17 @@ class ProductsController extends Controller {
         $this->em->persist($product);
         $this->em->flush();
     }
+    
+    public function listProducts() {
+        $user = Auth::user();
+        
+        $products = $this->em->createQuery(
+                "SELECT p.id, p.name, p.description, p.value, p.amount, p.dateEntry, p.validity, p2.name as providerName "
+                . "FROM Cantina:Product p "
+                . "JOIN Cantina:Provider p2 "
+                    . "WITH p2 = p.provider")
+                ->getResult();
+        
+        return view('listProducts', ['user' => $user, 'products' => $products]);
+    }
 }
