@@ -34,3 +34,5 @@ Route::get('/listProviders', ['as' => 'listProviders', 'uses' => 'ProvidersContr
 Route::get('/listProducts', ['as' => 'listProducts', 'uses' => 'ProductsController@listProducts'])->middleware('auth');
 
 Route::delete('/deleteProviders', ['as' => 'deleteProviders', 'uses' => 'ProvidersController@deleteProviders'])->middleware('auth');
+
+Route::get('/wallet', ['as' => 'wallet', 'uses' => 'WalletController@showWallet'])->middleware('auth');

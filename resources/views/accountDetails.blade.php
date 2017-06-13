@@ -36,6 +36,10 @@
         <dd>{{ $user->getEmail() }}</dd>
         <dd>{{ $user->getCpf() }}</dd>
         <dd>{{ $user->getRg() }}</dd>
+        <dd></dd>
+        <dd></dd>
+        <dd></dd>
+        <dd></dd>
     </dl>
 </div>
 @endsection

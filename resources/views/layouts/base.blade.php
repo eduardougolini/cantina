@@ -99,6 +99,7 @@
                     <a class="mdl-navigation__link" href="{{ URL::route('listProviders') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_shipping</i>Fornecedores</a>
                     <a class="mdl-navigation__link" href="{{ URL::route('listProducts') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Produtos</a>
                     <a class="mdl-navigation__link" href="{{ URL::route('registerSale') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Vendas</a>
+                    <a class="mdl-navigation__link" href="{{ URL::route('wallet') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">attach_money</i>Carteira</a>
                     <div class="mdl-layout-spacer"></div>
                     <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
                 </nav>

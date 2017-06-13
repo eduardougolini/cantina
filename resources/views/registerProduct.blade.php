@@ -47,7 +47,9 @@
         </paper-dropdown-menu>
         <dom-bind>
             <template is="dom-bind" id="datepickers">
+                <label>Data de Entrada</label>
                 <app-datepicker  class="entryDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="vertical"></app-datepicker>
+                <label>Data de Vencimento</label>
                 <app-datepicker  class="expirationDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="vertical" theme="goog-theme"></app-datepicker>
             </template>
         </dom-bind>

@@ -1,0 +1,18 @@
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: 3px;
+  margin: auto;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background: #D2691E;
+}
+
+.card{
+    width: 100%;
+}
+
+.table{
+    margin: auto;
+    margin-top: 1em;
+}
