@@ -36,3 +36,4 @@ Route::get('/listProducts', ['as' => 'listProducts', 'uses' => 'ProductsControll
 Route::delete('/deleteProviders', ['as' => 'deleteProviders', 'uses' => 'ProvidersController@deleteProviders'])->middleware('auth');
 
 Route::get('/wallet', ['as' => 'wallet', 'uses' => 'WalletController@showWallet'])->middleware('auth');
+Route::get('/generatePaymentSlip', ['as' => 'paymentSlip', 'uses' => 'PaymentSlipController@generatePaymentSlip'])->middleware('auth');
