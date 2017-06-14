@@ -16,3 +16,8 @@
     margin: auto;
     margin-top: 1em;
 }
+
+.value {
+    width: 100px;
+    margin-right: 40px;
+}
