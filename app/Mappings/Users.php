@@ -36,6 +36,13 @@ class Users
     private $password;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="remember_token", type="string", length=200, nullable=true)
+     */
+    private $rememberToken;
+
+    /**
      * @var \Image
      *
      * @ORM\ManyToOne(targetEntity="Image")

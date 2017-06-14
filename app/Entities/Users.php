@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,6 +35,13 @@ class Users
      * @ORM\Column(name="password", type="string", length=300, precision=0, scale=0, nullable=false, unique=false)
      */
     private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remember_token", type="string", length=200, precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $rememberToken;
 
     /**
      * @var \Image
@@ -112,6 +120,30 @@ class Users
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set rememberToken
+     *
+     * @param string $rememberToken
+     *
+     * @return Users
+     */
+    public function setRememberToken($rememberToken)
+    {
+        $this->rememberToken = $rememberToken;
+
+        return $this;
+    }
+
+    /**
+     * Get rememberToken
+     *
+     * @return string
+     */
+    public function getRememberToken()
+    {
+        return $this->rememberToken;
     }
 
     /**
