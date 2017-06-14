@@ -90,7 +90,7 @@
                         </button>
                         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
                             <li class="mdl-menu__item"><a href="accountDetails">Dados da conta</a></li>
-                            <li class="mdl-menu__item"><a href="{{ URL::route('logout') }}">Sair</a></li>
+                            <a href="{{ URL::route('logout') }}"><li class="mdl-menu__item">Sair</li></a>
                         </ul>
                     </div>
                 </header>
