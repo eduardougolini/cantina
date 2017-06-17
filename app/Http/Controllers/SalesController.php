@@ -23,12 +23,18 @@ class SalesController extends Controller {
         $user = Auth::user();
 
         $products = $this->em->createQuery(
-                "SELECT p "
+                "SELECT p.id, p.name "
                 . "FROM Cantina:Product p "
-            )
-            ->getResult();
+            )->getResult();
         
-        return view('registerSales', ['user' => $user, 'products' => $products]);
+        $clients = $this->em->createQuery(
+                'SELECT c.id, p.name '
+                . 'FROM Cantina:Client c '
+                . 'JOIN Cantina:Person p '
+                    . 'WITH c.person = p'
+                )->getResult();
+        
+        return view('registerSales', ['user' => $user, 'products' => $products, 'clients' => $clients]);
         
         
     }

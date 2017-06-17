@@ -38,7 +38,7 @@ class PaymentSlipController extends Controller {
         $boleto = new BancoDoBrasil([
         // Parâmetros obrigatórios
         'dataVencimento' => $date,
-        'valor' => 4,
+        'valor' => $value,
         'sequencial' => 1234567,
         'sacado' => $sacado,
         'cedente' => $cedente,
