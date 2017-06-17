@@ -1,6 +1,7 @@
 body {
     background-color: #f5f5f5;
-    font-family: 'Roboto';
+    font-family: 'Roboto','Helvetica','Arial',sans-serif!important;
+    overflow: hidden;
 }
 
 .login {
@@ -8,16 +9,9 @@ body {
     margin: auto;
     margin-top: 12%;
     text-align: center;
-}
-
-.login input {
-    margin-top: 1em;
-    width: 200px;
-    height: 2em;
-}
-
-.login .submit {
-    width: 100px;
+    background-color: white;
+    padding: 2em;
+    box-shadow: #ccc 1px 1px;
 }
 
 .login .forgotPassword {
