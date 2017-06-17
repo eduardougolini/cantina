@@ -16,6 +16,9 @@ Route::get('/', ['as' => 'dashboard', 'uses' => 'BaseController@home'])->middlew
 Route::get('/login', ['as' => 'login', function() {
     return view('login');
 }]);
+Route::get('/cadastro', ['as' => 'cadastro', function() {
+    return view('registerUser');
+}]);
 
 Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\LogoutController@logoutUser']);
 

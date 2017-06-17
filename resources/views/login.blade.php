@@ -13,7 +13,7 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input usermail" name="usermail" type="email" />
-            <label class="mdl-textfield__label" for="sample3">Email...</label>
+            <label class="mdl-textfield__label">Email...</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input password" name="password" type="password" />

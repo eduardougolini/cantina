@@ -1,0 +1,22 @@
+body {
+    background-color: #f5f5f5;
+    font-family: 'Roboto','Helvetica','Arial',sans-serif!important;
+    /*overflow: hidden;*/
+}
+
+.register {
+    margin: auto;
+    margin-top: 12%;
+    text-align: center;
+    background-color: white;
+    padding: 2em;
+    box-shadow: #ccc 1px 1px;
+}
+
+.register .left,
+.register .middle,
+.register .right {
+    height: 400px;
+    width: 300px;
+    display: inline-block;
+}
