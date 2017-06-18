@@ -12,27 +12,22 @@
 <link rel="import" href="Polymer/bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="Polymer/bower_components/paper-item/paper-item.html">
 <link rel="import" href="Polymer/bower_components/paper-checkbox/paper-checkbox.html">
+<link href="css/registerSales.css" rel="stylesheet" type="text/css"/>
 @parent
 @endsection
 
 @section('content')
-    <paper-dropdown-menu label="Cliente">
-        <paper-listbox slot="dropdown-content" selected="1">        
-            @foreach ($clients as $client)
-            <paper-item user_id="{{ $client['id'] }}">{{ $client['name'] }}</paper-item>
-            @endforeach
-        </paper-listbox>
-    </paper-dropdown-menu>
-
-    <paper-dropdown-menu label="Produtos">
-        <paper-listbox slot="dropdown-content" selected="0">
-            @foreach ($products as $product)
-            <paper-item product_id="{{ $product['id'] }}">{{ $product['name'] }}</paper-item>
-            @endforeach
-        </paper-listbox>
-    </paper-dropdown-menu>
-
-    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Adicionar</a>
+    <div class="selectors">
+        <paper-dropdown-menu class="productSelect" label="Produtos">
+            <paper-listbox slot="dropdown-content">
+                @foreach ($products as $product)
+                <paper-item product_id="{{ $product['id'] }}">{{ $product['name'] }}</paper-item>
+                @endforeach
+            </paper-listbox>
+        </paper-dropdown-menu>
+        
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Adicionar</a>
+    </div>
 
     <style is="custom-style">
         paper-checkbox.styled {
@@ -56,20 +51,32 @@
             max-width: 150px;
         }
     </style>
+    
+    <div class="productsList"></div>
 
-    <paper-checkbox checked class="inCash styled">
-        À vista
-        <span class="subtitle">
-            Pago no balcão
-        </span>
-    </paper-checkbox>
-    
-    <paper-checkbox class="paymentSlip styled">
-        Débito
-        <span class="subtitle">
-            Descontado da carteira
-        </span>
-    </paper-checkbox>
-    
-    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Realizar cobrança</a>
+    <div class="paymentChoices">
+        <paper-dropdown-menu class="clientSelect" label="Cliente">
+            <paper-listbox slot="dropdown-content">        
+                @foreach ($clients as $client)
+                <paper-item user_id="{{ $client['id'] }}">{{ $client['name'] }}</paper-item>
+                @endforeach
+            </paper-listbox>
+        </paper-dropdown-menu>
+        
+        <paper-checkbox checked class="inCash styled">
+            À vista
+            <span class="subtitle">
+                Pago no balcão
+            </span>
+        </paper-checkbox>
+
+        <paper-checkbox class="paymentSlip styled">
+            Débito
+            <span class="subtitle">
+                Descontado da carteira
+            </span>
+        </paper-checkbox>
+
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Realizar cobrança</a>
+    </div>
 @endsection

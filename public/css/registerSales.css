@@ -1,0 +1,16 @@
+.selectors {
+    width: 100%;
+}
+
+paper-dropdown-menu {
+    margin-right: 1em;
+}
+
+.paymentChoices {
+    position: absolute;
+    bottom: 1em;
+}
+
+.paymentChoices paper-checkbox {
+    margin-right: 1em;
+}
