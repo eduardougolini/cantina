@@ -2,8 +2,9 @@
 
 namespace App\Entities;
 
-
 use Doctrine\ORM\Mapping as ORM;
+use LaravelDoctrine\ACL\Roles\HasRoles;
+use LaravelDoctrine\ACL\Contracts\HasRoles as HasRolesContract;
 
 /**
  * Users
@@ -11,8 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="users", indexes={@ORM\Index(name="fk_usuario_pessoa1_idx", columns={"person_id"}), @ORM\Index(name="fk_users_image1_idx", columns={"image_id"})})
  * @ORM\Entity
  */
-class Users
+class Users implements HasRolesContract
 {
+    
+    use HasRoles;
+    
     /**
      * @var integer
      *
@@ -63,6 +67,28 @@ class Users
      */
     private $person;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Role", inversedBy="users")
+     * @ORM\JoinTable(name="users_has_role",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="users_id", referencedColumnName="id", nullable=true)
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="role_id", referencedColumnName="id", nullable=true)
+     *   }
+     * )
+     */
+    private $role;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->role = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -192,6 +218,40 @@ class Users
     public function getPerson()
     {
         return $this->person;
+    }
+
+    /**
+     * Add role
+     *
+     * @param \Role $role
+     *
+     * @return Users
+     */
+    public function addRole(Role $role)
+    {
+        $this->role[] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Remove role
+     *
+     * @param \Role $role
+     */
+    public function removeRole(Role $role)
+    {
+        $this->role->removeElement($role);
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRoles()
+    {
+        return $this->role;
     }
 }
 

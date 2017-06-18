@@ -35,7 +35,5 @@ class SalesController extends Controller {
                 )->getResult();
         
         return view('registerSales', ['user' => $user, 'products' => $products, 'clients' => $clients]);
-        
-        
     }
 }
