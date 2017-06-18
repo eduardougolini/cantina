@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form class="register" action="/registerUser" method="POST">
+    <form class="register" action="{{ URL::route('registerNewUser') }}" method="POST">
         <div class="left">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

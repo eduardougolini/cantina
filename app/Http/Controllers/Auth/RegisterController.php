@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManager;
+use App\Entities\Account;
+use App\Entities\Person;
+use App\Entities\Client;
 
 class RegisterController extends Controller
 {
@@ -28,44 +31,63 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+    private $em;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(EntityManager $em) {
         $this->middleware('guest');
+        $this->em = $em;
     }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+    
+    public function create(Request $request) {
+        $data['username'] = $request->get('username');
+        $data['responsibleName'] = $request->get('responsibleName');
+        $data['email'] = $request->get('email');
+        $data['birth'] = $request->get('birth');
+        $data['cpf'] = $request->get('cpf');
+        $data['rg'] = $request->get('rg');
+        $data['regitration'] = $request->get('registration');
+        $data['phone'] = $request->get('phone');
+        
+        $account = $this->createUserAccount();
+        $person = $this->createPerson($data);
+        
+        $client = new Client();
+        $client->setAccount($account);
+        $client->setPerson($person);
+        $client->setRegitration($data['registration']);
+        
+        $this->em->persist($client);
+        $this->em->flush($client);
+        
+        return redirect()->route('login');
     }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+    
+    private function createUserAccount() {
+        $account = new Account();
+        $account->setBalance(0);
+        
+        $this->em->persist($account);
+        
+        return $account;
+    }
+    
+    private function createPerson($data) {
+        $person = new Person();
+        $person->setName($data['username']);
+        $person->setResponsible($data['responsibleName']);
+        $person->setEmail($data['email']);
+        $person->setBirth($data['birth']);
+        $person->setCpf($data['cpf']);
+        $person->setRg($data['rg']);
+        $person->setPhone($data['phone']);
+        
+        $this->em->persist($person);
+        
+        return $person;
     }
 }

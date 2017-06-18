@@ -25,6 +25,7 @@ Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\LogoutController@logout
 Route::get('/sql', ['uses' => 'BaseController@teste']);
 
 Route::post('/login/authenticate', ['uses' =>'Auth\LoginController@authenticate']);
+Route::post('/registerNewUser', ['as'=> 'registerNewUser', 'uses' =>'Auth\RegisterController@create']);
 
 Route::get('/accountDetails', ['as' => 'accountDetails', 'uses' => 'AccountDetailsController@showDetails'])->middleware('auth');
 
