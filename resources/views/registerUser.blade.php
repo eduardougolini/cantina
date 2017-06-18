@@ -6,6 +6,7 @@
     <script src="js/vendor/mdl/1.3.0/material.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="import" href="Polymer/bower_components/app-datepicker/app-datepicker.html">
+    <script src="js/registerUser.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -31,7 +32,11 @@
         </div>
         <div class="middle">
             <span>Data de nascimento...</span>
-            <app-datepicker  class="birthDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="horizontal"></app-datepicker>
+            <dom-bind>
+                <template is="dom-bind" id="datepicker">
+                    <app-datepicker  class="birthDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="horizontal"></app-datepicker>
+                </template>
+            </dom-bind>
         </div>
         <div class="right">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

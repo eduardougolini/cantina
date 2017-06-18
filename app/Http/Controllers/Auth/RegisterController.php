@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManager;
 use App\Entities\Account;
 use App\Entities\Person;
 use App\Entities\Client;
+use App\Entities\Users;
 
 class RegisterController extends Controller
 {
@@ -47,10 +48,11 @@ class RegisterController extends Controller
         $data['username'] = $request->get('username');
         $data['responsibleName'] = $request->get('responsibleName');
         $data['email'] = $request->get('email');
-        $data['birth'] = $request->get('birth');
+        $data['password'] = $request->get('password');
+        $data['birth'] = new \DateTime($request->get('birthDate'));
         $data['cpf'] = $request->get('cpf');
         $data['rg'] = $request->get('rg');
-        $data['regitration'] = $request->get('registration');
+        $data['registration'] = $request->get('registration');
         $data['phone'] = $request->get('phone');
         
         $account = $this->createUserAccount();
@@ -61,10 +63,17 @@ class RegisterController extends Controller
         $client->setPerson($person);
         $client->setRegitration($data['registration']);
         
-        $this->em->persist($client);
-        $this->em->flush($client);
+        $user = new Users();
+        $user->setEmail($data['email']);
+        $user->setPassword(bcrypt($data['password']));
+        $user->setPerson($person);
         
-        return redirect()->route('login');
+        $this->em->persist($client);
+        $this->em->persist($user);
+        
+        $this->em->flush();
+        
+        return route('login');
     }
     
     private function createUserAccount() {
@@ -81,7 +90,7 @@ class RegisterController extends Controller
         $person->setName($data['username']);
         $person->setResponsible($data['responsibleName']);
         $person->setEmail($data['email']);
-        $person->setBirth($data['birth']);
+        $person->setBirth($data['birth']->format('Y-m-d H:i:s'));
         $person->setCpf($data['cpf']);
         $person->setRg($data['rg']);
         $person->setPhone($data['phone']);
