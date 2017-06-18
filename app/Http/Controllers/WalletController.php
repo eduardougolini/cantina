@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
+use App\Entities\Account;
 
 /**
  * Description of WalletController
@@ -22,8 +23,21 @@ class WalletController extends Controller{
     
     public function showWallet(){
         $user = Auth::user();
+        
+        $account = $this->em->createQuery(
+                'SELECT a '
+                . 'FROM Cantina:Users u '
+                . 'JOIN Cantina:Person p '
+                    . 'WITH p = u.person '
+                . 'JOIN Cantina:Client c '
+                    . 'WITH c.person = p '
+                . 'JOIN Cantina:account a '
+                    . 'WITH a = c.account '
+                . 'WHERE u = :userId'
+                )->setParameter('userId', $user->id)
+                ->getOneOrNullResult();
 
-        return view('wallet', ['user' => $user]);
+        return view('wallet', ['user' => $user, 'account' => $account]);
 
     }
 }

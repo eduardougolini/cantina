@@ -20,7 +20,7 @@
                 <h2 class="mdl-card__title-text"><i class="material-icons">account_balance_wallet</i>Carteira</h2>
             </div>
             <div class="mdl-card__supporting-text">
-                Seu saldo é 10 reais
+                Seu saldo é {{ $account->getBalance() }} reais
             </div>
             <div class="mdl-card__actions mdl-card--border">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
