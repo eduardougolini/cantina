@@ -1,16 +1,17 @@
 body {
     background-color: #f5f5f5;
     font-family: 'Roboto','Helvetica','Arial',sans-serif!important;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 .register {
     margin: auto;
-    margin-top: 12%;
+    margin-top: 20%;
     text-align: center;
     background-color: white;
     padding: 2em;
     box-shadow: #ccc 1px 1px;
+    height: 320px;
 }
 
 .register .left,
@@ -19,4 +20,26 @@ body {
     height: 400px;
     width: 300px;
     display: inline-block;
+}
+
+.register .left {
+    float: left;
+    position: relative;
+}
+
+.register .middle {
+    float: right;
+    position: relative;
+    left: -46%;
+}
+
+.register .right {
+    position: relative;
+    float: right;
+    left: 23%;
+}
+
+.register .submit {
+    top: 300px;
+    float: right;
 }

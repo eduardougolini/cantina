@@ -31,7 +31,7 @@
         </div>
         <div class="middle">
             <span>Data de nascimento...</span>
-            <app-datepicker  class="birthDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="vertical"></app-datepicker>
+            <app-datepicker  class="birthDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="horizontal"></app-datepicker>
         </div>
         <div class="right">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
