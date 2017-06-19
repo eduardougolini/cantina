@@ -38,4 +38,8 @@ $(document).ready(function() {
         
         valueObj.text((valueObj.attr('unit_price') * $(this).val()).toFixed(2));
     });
+    
+    $('.productsTable').on('click', '.removeProductButton', function() {
+        var rowToRemove = $(this).parents('tr').remove();
+    });
 });
