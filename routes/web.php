@@ -38,6 +38,7 @@ Route::get('/registerSale', ['as' => 'registerSale', 'uses' =>'SalesController@r
 
 Route::get('/listProviders', ['as' => 'listProviders', 'uses' => 'ProvidersController@listProviders'])->middleware('auth');
 Route::get('/listProducts', ['as' => 'listProducts', 'uses' => 'ProductsController@listProducts'])->middleware('auth');
+Route::get('/getProduct/{productId}', ['as' => 'getProductData', 'uses' => 'ProductsController@getProductData'])->middleware('auth');
 
 Route::delete('/deleteProviders', ['as' => 'deleteProviders', 'uses' => 'ProvidersController@deleteProviders'])->middleware('auth');
 

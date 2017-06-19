@@ -14,3 +14,11 @@ paper-dropdown-menu {
 .paymentChoices paper-checkbox {
     margin-right: 1em;
 }
+
+.productsTable {
+    width: 85%;
+}
+
+.productsTable th {
+    width: 33%;
+}

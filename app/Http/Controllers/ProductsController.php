@@ -72,4 +72,15 @@ class ProductsController extends Controller {
         
         return view('listProducts', ['user' => $user, 'products' => $products]);
     }
+    
+    public function getProductData($productId) {
+        $product = $this->em->createQuery(
+                'SELECT p '
+                . 'FROM Cantina:Product p '
+                . 'Where p = :productId'
+                )->setParameter('productId', $productId)
+                ->getArrayResult();
+        
+        return json_encode($product[0]);
+    }
 }

@@ -3,9 +3,6 @@
 @section('title', 'Cadastro de vendas')
 
 @section('head')
-@endsection
-
-@section('sidebar')
 <script src="Polymer/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 <script src="js/vendor/jquery-3.2.1.min.js" type="text/javascript"></script>
 <link rel="import" href="Polymer/bower_components/polymer/polymer.html">
@@ -15,7 +12,6 @@
 <link rel="import" href="Polymer/bower_components/paper-checkbox/paper-checkbox.html">
 <link href="css/registerSales.css" rel="stylesheet" type="text/css"/>
 <script src="js/registerSale.js" type="text/javascript"></script>
-@parent
 @endsection
 
 @section('content')
@@ -23,12 +19,12 @@
         <paper-dropdown-menu class="productSelect" label="Produtos">
             <paper-listbox slot="dropdown-content">
                 @foreach ($products as $product)
-                <paper-item product_id="{{ $product['id'] }}">{{ $product['name'] }}</paper-item>
+                    <paper-item product_id="{{ $product['id'] }}">{{ $product['name'] }}</paper-item>
                 @endforeach
             </paper-listbox>
         </paper-dropdown-menu>
         
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Adicionar</a>
+        <a class="addProductButton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Adicionar</a>
     </div>
 
     <style is="custom-style">
@@ -54,12 +50,13 @@
         }
     </style>
     
-    <table class="productsTable mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+    <table class="productsTable mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
           <tr>
             <th class="mdl-data-table__cell--non-numeric">Produto</th>
-            <th>Quantidade</th>
-            <th>Preço</th>
+            <th class="mdl-data-table__cell--non-numeric">Quantidade</th>
+            <th class="mdl-data-table__cell--non-numeric">Preço</th>
+            <th class="mdl-data-table__cell--non-numeric"></th>
           </tr>
         </thead>
         <tbody>
