@@ -7,12 +7,14 @@
 
 @section('sidebar')
 <script src="Polymer/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+<script src="js/vendor/jquery-3.2.1.min.js" type="text/javascript"></script>
 <link rel="import" href="Polymer/bower_components/polymer/polymer.html">
 <link rel="import" href="Polymer/bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="Polymer/bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="Polymer/bower_components/paper-item/paper-item.html">
 <link rel="import" href="Polymer/bower_components/paper-checkbox/paper-checkbox.html">
 <link href="css/registerSales.css" rel="stylesheet" type="text/css"/>
+<script src="js/registerSale.js" type="text/javascript"></script>
 @parent
 @endsection
 
@@ -52,7 +54,17 @@
         }
     </style>
     
-    <div class="productsList"></div>
+    <table class="productsTable mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Produto</th>
+            <th>Quantidade</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
 
     <div class="paymentChoices">
         <paper-dropdown-menu class="clientSelect" label="Cliente">
