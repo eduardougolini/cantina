@@ -3,6 +3,7 @@
 @section('title', 'Cadastro de Produtos')
 
 @section('head')
+    <link href="css/listProducts.css" rel="stylesheet" type="text/css"/>
 @endsection
         
 @section('sidebar')
