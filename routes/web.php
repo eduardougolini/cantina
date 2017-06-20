@@ -34,6 +34,7 @@ Route::post('/registerNewProvider', ['as' => 'registerNewProvider', 'uses' =>'Pr
 Route::get('/registerProduct', ['as' => 'registerProduct', 'uses' =>'ProductsController@registerProductView'])->middleware('auth');
 Route::post('/registerNewProduct', ['as' => 'registerNewProduct', 'uses' =>'ProductsController@registerNewProduct'])->middleware('auth');
 Route::get('/registerSale', ['as' => 'registerSale', 'uses' =>'SalesController@registerSaleView'])->middleware('auth');
+Route::post('/registerNewSale', ['as' => 'registerNewSale', 'uses' =>'SalesController@registerNewSale'])->middleware('auth');
 
 
 Route::get('/listProviders', ['as' => 'listProviders', 'uses' => 'ProvidersController@listProviders'])->middleware('auth');

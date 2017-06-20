@@ -23,7 +23,7 @@ $(document).ready(function() {
             data = JSON.parse(data);
             
             $('.productsTable tbody').append(
-                '<tr>' +
+                '<tr product_id="' + data.id + '">' +
                     '<td class="mdl-data-table__cell--non-numeric">' + data.name + '</td>' +
                     '<td class="mdl-data-table__cell--non-numeric"><input class="ammount" type="number" value=1 /></td>' +
                     '<td class="value mdl-data-table__cell--non-numeric" unit_price = ' + data.value + '>' + data.value + '</td>' +
@@ -40,6 +40,40 @@ $(document).ready(function() {
     });
     
     $('.productsTable').on('click', '.removeProductButton', function() {
-        var rowToRemove = $(this).parents('tr').remove();
+        $(this).parents('tr').remove();
+    });
+    
+    $('.paymentChoices .submit').click(function() {
+        var clientId = $('.paymentChoices paper-item.iron-selected').attr('client_id');
+        
+        if (clientId === undefined) {
+            alert('Selecione um cliente!');
+            return;
+        }
+        
+        var inCash = $('.inCash').attr('checked') === 'checked';
+        var paymentSlip = $('.paymentSlip').attr('checked') === 'checked';
+        
+        var productsList = [];
+        
+        $('.productsTable tr').each(function() {
+            productsList.push({
+                product_id: $(this).attr('product_id'),
+                ammount: $(this).find('.ammount').val()
+            });
+        });
+        
+        var token = $(this).siblings('input[name=_token]').val();
+        
+        $.post('/registerNewSale', {
+            _token: token,
+            clientId: clientId,
+            inCash: inCash,
+            paymentSlip: paymentSlip,
+            productsList: productsList
+        }, function() {
+            window.location.reload();
+        });
+        
     });
 });

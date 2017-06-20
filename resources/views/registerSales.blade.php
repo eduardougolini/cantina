@@ -11,7 +11,7 @@
 <link rel="import" href="Polymer/bower_components/paper-item/paper-item.html">
 <link rel="import" href="Polymer/bower_components/paper-checkbox/paper-checkbox.html">
 <link href="css/registerSales.css" rel="stylesheet" type="text/css"/>
-<script src="js/registerSale.js" type="text/javascript"></script>
+<script src="js/registerSales.js" type="text/javascript"></script>
 @endsection
 
 @section('content')
@@ -67,7 +67,7 @@
         <paper-dropdown-menu class="clientSelect" label="Cliente">
             <paper-listbox slot="dropdown-content">        
                 @foreach ($clients as $client)
-                <paper-item user_id="{{ $client['id'] }}">{{ $client['name'] }}</paper-item>
+                <paper-item client_id="{{ $client['id'] }}">{{ $client['name'] }}</paper-item>
                 @endforeach
             </paper-listbox>
         </paper-dropdown-menu>
@@ -85,7 +85,7 @@
                 Descontado da carteira
             </span>
         </paper-checkbox>
-
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Realizar cobrança</a>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <a class="submit mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Realizar cobrança</a>
     </div>
 @endsection
