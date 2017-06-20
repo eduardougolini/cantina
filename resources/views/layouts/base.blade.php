@@ -96,6 +96,7 @@
                     @if ($isManager)
                         <a class="mdl-navigation__link" href="{{ URL::route('listProviders') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_shipping</i>Fornecedores</a>
                         <a class="mdl-navigation__link" href="{{ URL::route('registerSale') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Vendas</a>
+                        <a class="mdl-navigation__link" href="{{ URL::route('payments') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">payment</i>Pagamentos</a>
                     @endif
                     @if ($isNormalUser)
                         <a class="mdl-navigation__link" href="{{ URL::route('wallet') }}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">attach_money</i>Carteira</a>

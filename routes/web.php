@@ -41,6 +41,7 @@ Route::post('/registerNewProduct', ['as' => 'registerNewProduct', 'uses' =>'Prod
 Route::get('/registerSale', ['as' => 'registerSale', 'uses' =>'SalesController@registerSaleView'])->middleware('auth');
 Route::post('/registerNewSale', ['as' => 'registerNewSale', 'uses' =>'SalesController@registerNewSale'])->middleware('auth');
 
+Route::get('/payments', ['as' => 'payments', 'uses' =>'PaymentsController@renderPaymentsView'])->middleware('auth');
 
 Route::get('/listProviders', ['as' => 'listProviders', 'uses' => 'ProvidersController@listProviders'])->middleware('auth');
 Route::get('/listProducts', ['as' => 'listProducts', 'uses' => 'ProductsController@listProducts'])->middleware('auth');
