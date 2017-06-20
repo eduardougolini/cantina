@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entities\Sale;
+use App\Entities\SaleHasProduct;
 use App\Entities\Transaction;
 
 /**
@@ -52,16 +53,18 @@ class SalesController extends Controller {
             $type = 'DEBITO';
         }
         
+        $client = $this->em->getRepository('Cantina:Client')->find($clientId);
+        
         $sale = new Sale();
         $sale->setDate(new \DateTime());
         $sale->setType($type);
-        $sale->setClient($this->em->getReference('Cantina:Client', $clientId));
+        $sale->setClient($client);
         
         $this->em->persist($sale);
         
         $totalPrice = $this->addProductsToSale($sale, $productsList);
         
-        $this->addTransaction($clientId, $sale, $type, $totalPrice);
+        $this->addTransaction($client, $sale, $type, $totalPrice);
         
         $this->em->flush();
     }
@@ -70,14 +73,29 @@ class SalesController extends Controller {
         $totalPrice = 0;
         
         foreach ($productsList as $productInfo) {
-            $product = $this->em->getRepository('Cantina:Product')->find($productInfo['id']);
+            $product = $this->em->getRepository('Cantina:Product')->find($productInfo['product_id']);
+            $saleHasProduct = new SaleHasProduct();
+            $saleHasProduct->setSale($sale);
+            $saleHasProduct->setProduct($product);
+            $saleHasProduct->setAmount($productInfo['ammount']);
             
-            $sale->addProduct($product);
-            $sale->setClient()
+            $totalPrice += $product->getValue();
+            
+            $this->em->persist($saleHasProduct);
         }
+        
+        return $totalPrice;
     }
     
-    private function addTransaction($clientId, $sale, $type, $totalPrice) {
+    private function addTransaction($client, $sale, $type, $totalPrice) {
+        $transaction = new Transaction();
+                
+        $transaction->setAccount($client->getAccount());
+        $transaction->setDate(new \DateTime());
+        $transaction->setSale($sale);
+        $transaction->setType($type);
+        $transaction->setValue($totalPrice);
         
+        $this->em->persist($transaction);
     }
 }

@@ -90,7 +90,7 @@ class SaleHasProduct
      *
      * @return SaleHasProduct
      */
-    public function setProduct(\Product $product = null)
+    public function setProduct(Product $product = null)
     {
         $this->product = $product;
 
@@ -114,7 +114,7 @@ class SaleHasProduct
      *
      * @return SaleHasProduct
      */
-    public function setSale(\Sale $sale = null)
+    public function setSale(Sale $sale = null)
     {
         $this->sale = $sale;
 
