@@ -73,7 +73,7 @@ class SalesController extends Controller {
             $product = $this->em->getRepository('Cantina:Product')->find($productInfo['id']);
             
             $sale->addProduct($product);
-            $sale->
+            $sale->setClient()
         }
     }
     

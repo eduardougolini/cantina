@@ -83,20 +83,6 @@ class Product
      */
     private $provider;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Sale", mappedBy="product")
-     */
-    private $sale;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->sale = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 }
 

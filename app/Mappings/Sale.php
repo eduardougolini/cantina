@@ -45,28 +45,6 @@ class Sale
      */
     private $client;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Product", inversedBy="sale")
-     * @ORM\JoinTable(name="sale_has_product",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="sale_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $product;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->product = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 }
 
