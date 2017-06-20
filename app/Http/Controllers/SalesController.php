@@ -66,6 +66,8 @@ class SalesController extends Controller {
         
         $this->addTransaction($client, $sale, $type, $totalPrice);
         
+        $this->deductValueFromAccountBalance($client, $totalPrice);
+        
         $this->em->flush();
     }
     
@@ -97,5 +99,12 @@ class SalesController extends Controller {
         $transaction->setValue($totalPrice);
         
         $this->em->persist($transaction);
+    }
+    
+    private function deductValueFromAccountBalance($client, $totalValue) {
+        $account = $client->getAccount();
+        
+        $actualBalance = $account->getBalance();
+        $account->setBalance($actualBalance - $totalValue);
     }
 }
