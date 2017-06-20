@@ -47,9 +47,9 @@ class SalesController extends Controller {
         $paymentSlip = $request->get('paymentSlip');
         $productsList = $request->get('productsList');
         
-        if ($inCash) {
+        if ($inCash === 'true') {
             $type = 'DINHEIRO';
-        } else if ($paymentSlip) {
+        } else if ($paymentSlip === 'true') {
             $type = 'DEBITO';
         }
         
