@@ -1,18 +1,18 @@
-<?php
+@php
+    $user = Illuminate\Support\Facades\Auth::user();
+@endphp
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+@extends('layouts.base')
 
-namespace App\Http\Controllers;
+@section('title', 'Nós')
 
-/**
- * Description of AboutUs
- *
- * @author eduardo
- */
-class AboutUs {
-    //put your code here
-}
+@section('head')
+@endsection
+        
+@section('sidebar')
+    @parent
+@endsection
+
+@section('content')
+         <img src="css/images/us.jpg" height="500px" style="margin: auto;" alt=""/>
+@endsection

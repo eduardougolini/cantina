@@ -20,6 +20,11 @@ Route::get('/cadastro', ['as' => 'cadastro', function() {
     return view('registerUser');
 }]);
 
+Route::get('/aboutUs', ['as' => 'aboutUs', function() {
+    return view('aboutUs');
+}]);
+
+
 Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\LogoutController@logoutUser']);
 
 Route::get('/sql', ['uses' => 'BaseController@teste']);
