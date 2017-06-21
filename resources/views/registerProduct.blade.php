@@ -39,7 +39,7 @@
                 <label class="mdl-textfield__label" for="amount">Quantidade...</label>
             </div>
         </div>
-        <div class="right">
+        <div class="middle">
             <paper-dropdown-menu class="providersSelect" label="Fornecedor">
                 <paper-listbox slot="dropdown-content" selected="0">
                     <paper-item>Selecione</paper-item>
@@ -52,11 +52,13 @@
                 <template is="dom-bind" id="datepickers">
                     <label>Data de Entrada</label>
                     <app-datepicker  class="entryDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="vertical"></app-datepicker>
-                    <label>Data de Vencimento</label>
-                    <app-datepicker  class="expirationDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="vertical" theme="goog-theme"></app-datepicker>
+                    <div class="right">
+                        <label>Data de Vencimento</label>
+                        <app-datepicker  class="expirationDate" auto-update-date="true" on-date-changed="_onSelectedDateChanged" view="vertical" theme="goog-theme"></app-datepicker>
+                    </div>
                 </template>
             </dom-bind>
+            <a class="submit mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="{{ URL::route('registerNewProduct') }}">Cadastrar</a>
         </div>
-        <a class="submit mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" href="{{ URL::route('registerNewProduct') }}">Cadastrar</a>
     </form>
 @endsection

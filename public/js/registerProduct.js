@@ -41,8 +41,8 @@ $(document).ready(function() {
             providerId: providerId,
             entryDate: productEntryDate,
             validityDate: productValidityDate
-        }, function(data) {
-            debugger;
+        }, function() {
+            window.location.reload();
         });
     });
     
