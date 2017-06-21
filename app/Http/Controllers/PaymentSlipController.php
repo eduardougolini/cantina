@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 use OpenBoleto\Banco\BancoDoBrasil;
 use OpenBoleto\Agente;
+use App\Entities\Payment;
+use App\Entities\Client;
 
 /**
  * Description of PaymentSlipController
@@ -24,6 +26,8 @@ class PaymentSlipController extends Controller {
     
     public function generatePaymentSlip(Request $request) {
         $value = $request->get('value');
+        
+        $this->addUserPayment($value);
         
         if ($value < 0) {
             throw new \Exception('Valor negativo enviado para geração de boleto');
@@ -57,6 +61,29 @@ class PaymentSlipController extends Controller {
     ]);
 
     echo $boleto->getOutput();
+    }
+    
+    private function addUserPayment($value) {        
+        $user = Auth::user();
+        
+        $clientId = $this->em->createQuery(
+                'SELECT c.id '
+                . 'FROM Cantina:Users u '
+                . 'JOIN Cantina:Person p '
+                    . 'WITH p = u.person '
+                . 'JOIN Cantina:Client c '
+                    . 'WITH c.person = p '
+                . 'WHERE u = :userId'
+                )->setParameter('userId', $user->id)
+                ->getOneOrNullResult();
+        
+        $payment = new Payment();
+        $payment->setClient($this->em->getReference('Cantina:Client', $clientId));
+        $payment->setValor($value);
+        $payment->setPaid(false);
+        
+        $this->em->persist($payment);
+        $this->em->flush();
     }
     
     private function getSacado() {

@@ -111,7 +111,7 @@ class Payment
      *
      * @return Payment
      */
-    public function setClient(\Client $client = null)
+    public function setClient(Client $client = null)
     {
         $this->client = $client;
 

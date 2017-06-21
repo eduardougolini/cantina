@@ -22,12 +22,14 @@
             </thead>
             <tbody>
                 @foreach ($payments as $payment)
-                    <tr class="payment" payment_id="">
-                      <td class="mdl-data-table__cell--non-numeric"></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><button class="approveButton mdl-button mdl-js-button mdl-button--fab mdl-button--colored">Aprovar</button></td>
+                    <tr class="payment" payment_id="{{ $payment['id'] }}">
+                      <td class="mdl-data-table__cell--non-numeric">{{ $payment['name'] }}</td>
+                      <td>{{ $payment['valor'] }}</td>
+                      @if ($payment['paid'])
+                        <td>PAGO</td>
+                      @else
+                        <td><button class="approveButton mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Aprovar</button></td>
+                      @endif
                     </tr>
                 @endforeach
             </tbody>
