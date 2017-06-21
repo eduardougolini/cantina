@@ -3,6 +3,8 @@
 @section('title', 'Listagem de pagamentos')
 
 @section('head')
+    <script src="js/vendor/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="js/payments.js" type="text/javascript"></script>
 @endsection
         
 @section('sidebar')
@@ -24,7 +26,7 @@
                 @foreach ($payments as $payment)
                     <tr class="payment" payment_id="{{ $payment['id'] }}">
                       <td class="mdl-data-table__cell--non-numeric">{{ $payment['name'] }}</td>
-                      <td>{{ $payment['valor'] }}</td>
+                      <td>{{ $payment['value'] }}</td>
                       @if ($payment['paid'])
                         <td>PAGO</td>
                       @else

@@ -26,7 +26,7 @@ class PaymentsController extends Controller {
         $user = Auth::user();
         
         $payments = $this->em->createQuery(
-                'SELECT p.id, p.paid, p.valor, p1.name '
+                'SELECT p.id, p.paid, p.value, p1.name '
                 . 'FROM Cantina:Payment p '
                 . 'JOIN Cantina:Client c '
                     . 'WITH c = p.client '
@@ -35,5 +35,22 @@ class PaymentsController extends Controller {
                 )->getResult();
         
         return view('payments', ['user' => $user, 'payments' => $payments]);
+    }
+    
+    public function setPaymentAsPaid(Request $request) {
+        $paymentId = $request->get('paymentId');
+        
+        $payment = $this->em->getRepository('Cantina:Payment')->find($paymentId);
+        $payment->setPaid(true);
+        
+        $this->em->flush();
+        
+        $this->em->createQuery(
+                'UPDATE Cantina:Account a '
+                . 'SET a.balance = (a.balance + :value) '
+                . 'WHERE a = :accountId'
+                )->setParameter('accountId', $payment->getClient()->getAccount())
+                ->setParameter('value', $payment->getValue())
+                ->execute();
     }
 }

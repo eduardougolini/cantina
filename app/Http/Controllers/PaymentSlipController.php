@@ -79,7 +79,7 @@ class PaymentSlipController extends Controller {
         
         $payment = new Payment();
         $payment->setClient($this->em->getReference('Cantina:Client', $clientId));
-        $payment->setValor($value);
+        $payment->setValue($value);
         $payment->setPaid(false);
         
         $this->em->persist($payment);
