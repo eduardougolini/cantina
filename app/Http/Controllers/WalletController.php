@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
-use App\Entities\Account;
 
 /**
  * Description of WalletController
