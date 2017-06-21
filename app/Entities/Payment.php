@@ -24,9 +24,9 @@ class Payment
     /**
      * @var string
      *
-     * @ORM\Column(name="valor", type="decimal", precision=10, scale=2, nullable=false, unique=false)
+     * @ORM\Column(name="value", type="decimal", precision=10, scale=2, nullable=false, unique=false)
      */
-    private $valor;
+    private $value;
 
     /**
      * @var boolean
@@ -57,27 +57,27 @@ class Payment
     }
 
     /**
-     * Set valor
+     * Set value
      *
-     * @param string $valor
+     * @param string $value
      *
      * @return Payment
      */
-    public function setValor($valor)
+    public function setValue($value)
     {
-        $this->valor = $valor;
+        $this->value = $value;
 
         return $this;
     }
 
     /**
-     * Get valor
+     * Get value
      *
      * @return string
      */
-    public function getValor()
+    public function getValue()
     {
-        return $this->valor;
+        return $this->value;
     }
 
     /**
