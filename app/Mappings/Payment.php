@@ -24,9 +24,9 @@ class Payment
     /**
      * @var string
      *
-     * @ORM\Column(name="valor", type="decimal", precision=10, scale=2, nullable=false)
+     * @ORM\Column(name="value", type="decimal", precision=10, scale=2, nullable=false)
      */
-    private $valor;
+    private $value;
 
     /**
      * @var boolean
