@@ -36,8 +36,12 @@ class WalletController extends Controller{
                 . 'WHERE u = :userId'
                 )->setParameter('userId', $user->id)
                 ->getOneOrNullResult();
+        
+        $transactions = $this->em->getRepository('Cantina:Transaction')->findBy([
+            'account' => $account->getId()
+        ]);
 
-        return view('wallet', ['user' => $user, 'account' => $account]);
+        return view('wallet', ['user' => $user, 'account' => $account, 'transactions' => $transactions]);
 
     }
 }

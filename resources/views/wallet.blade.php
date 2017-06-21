@@ -36,31 +36,21 @@
         <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
             <thead>
                 <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Produto</th>
+                    <th class="mdl-data-table__cell--non-numeric">Id da compra</th>
                     <th>Data de Compra</th>
+                    <th>Tipo de Pagamento</th>
                     <th>Valor Pago</th>
-                    <th>Atendente</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-                    <td>25</td>
-                    <td>$2.90</td>
-                    <td>vadgina</td>
-                </tr>
-                <tr>
-                    <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-                    <td>50</td>
-                    <td>$1.25</td>
-                    <td>vadgina</td>
-                </tr>
-                <tr>
-                    <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                    <td>10</td>
-                    <td>$2.35</td>
-                    <td>vadgina</td>
-                </tr>
+                @foreach ($transactions as $transaction)
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">{{ $transaction->getId() }}</td>
+                        <td>{{ $transaction->getDate()->format('d-m-Y') }}</td>
+                        <td>{{ $transaction->getType() }}</td>
+                        <td>{{ $transaction->getValue() }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
