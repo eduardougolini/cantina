@@ -92,4 +92,22 @@ class ProductsController extends Controller {
         
         return json_encode($product[0]);
     }
+    
+    public function deleteProducts(Request $request) {
+        
+        $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
+        if (! $user->hasRoleByName('manager')) {
+            throw new \Exception('Acesso negado!', 403);
+        }
+        
+        $ids = json_decode($request->get('ids'));
+        
+        foreach ($ids as $id) {
+            $product = $this->em->getRepository('Cantina:Product')->find($id);
+            
+            $this->em->remove($product);
+        }
+        
+        $this->em->flush();
+    }
 }

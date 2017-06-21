@@ -3,7 +3,9 @@
 @section('title', 'Cadastro de Produtos')
 
 @section('head')
+    <script src="js/vendor/jquery-3.2.1.min.js" type="text/javascript"></script>
     <link href="css/listProducts.css" rel="stylesheet" type="text/css"/>
+    <script src="js/listProducts.js" type="text/javascript"></script>
 @endsection
         
 @section('sidebar')
@@ -27,7 +29,7 @@
             </thead>
             <tbody>
                 @foreach ($products as $product)
-                <tr class="provider" provider_id="{{ $product['id'] }}">
+                <tr class="product" product_id="{{ $product['id'] }}">
                     <td class="mdl-data-table__cell--non-numeric">{{ $product['name'] }}</td>
                     <td>{{ $product['description'] }}</td>
                     <td>{{ $product['value'] }}</td>
