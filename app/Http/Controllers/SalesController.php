@@ -24,7 +24,11 @@ class SalesController extends Controller {
     }
     
     public function registerSaleView() {
-        $user = Auth::user();
+        
+        $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
+        if (! $user->hasRoleByName('manager')) {
+            throw new \Exception('Acesso negado!', 403);
+        }
 
         $products = $this->em->createQuery(
                 "SELECT p.id, p.name "
@@ -42,6 +46,12 @@ class SalesController extends Controller {
     }
     
     public function registerNewSale(Request $request) {
+        
+        $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
+        if (! $user->hasRoleByName('manager')) {
+            throw new \Exception('Acesso negado!', 403);
+        }
+        
         $clientId = $request->get('clientId');
         $inCash = $request->get('inCash');
         $paymentSlip = $request->get('paymentSlip');

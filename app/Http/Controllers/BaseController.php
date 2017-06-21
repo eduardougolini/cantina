@@ -23,12 +23,4 @@ class BaseController extends Controller {
         $user = Auth::user();
         return view('home', ['user' => $user]);
     }
-    
-    public function teste() {
-        $users = $this->em->createQuery(
-                'SELECT p FROM Cantina:Person p')
-                ->getArrayResult();
-        
-        return $users;
-    }
 }

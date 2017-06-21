@@ -22,7 +22,11 @@ class ProductsController extends Controller {
      * @return Response
      */
     public function registerProductView() {
-        $user = Auth::user();
+        $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
+        if (! $user->hasRoleByName('manager')) {
+            throw new \Exception('Acesso negado!', 403);
+        }
+        
         
         $providers = $this->em->getRepository('Cantina:Provider')->findAll();
         
@@ -33,6 +37,11 @@ class ProductsController extends Controller {
     }   
     
     public function registerNewProduct(Request $request) {
+        $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
+        if (! $user->hasRoleByName('manager')) {
+            throw new \Exception('Acesso negado!', 403);
+        }
+        
         $name = $request->get('name');
         $description = $request->get('description');
         $value = $request->get('value');

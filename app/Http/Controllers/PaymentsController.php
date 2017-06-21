@@ -38,6 +38,12 @@ class PaymentsController extends Controller {
     }
     
     public function setPaymentAsPaid(Request $request) {
+        
+        $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
+        if (! $user->hasRoleByName('manager')) {
+            throw new \Exception('Acesso negado!', 403);
+        }
+        
         $paymentId = $request->get('paymentId');
         
         $payment = $this->em->getRepository('Cantina:Payment')->find($paymentId);

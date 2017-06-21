@@ -22,7 +22,10 @@ class ProvidersController extends Controller{
     }
     
     public function listProviders(){
-        $user = Auth::user();
+        $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
+        if (! $user->hasRoleByName('manager')) {
+            throw new \Exception('Acesso negado!', 403);
+        }
         
         $providers = $this->em->createQuery(
                 "SELECT p.id, p.name, p.phone, p.email, a.street, a.city, a.state, a.district, a.cep, a.number "
@@ -35,11 +38,21 @@ class ProvidersController extends Controller{
     }
     
     public function registerProviderView() {
-        $user = Auth::user();
+        $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
+        if (! $user->hasRoleByName('manager')) {
+            throw new \Exception('Acesso negado!', 403);
+        }
+        
         return view('registerProviders', ['user' => $user]);
     }
     
     public function registerNewProvider(Request $request) {
+        
+        $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
+        if (! $user->hasRoleByName('manager')) {
+            throw new \Exception('Acesso negado!', 403);
+        }
+        
         $name = $request->get('name');
         $phone = $request->get('phone');
         $email = $request->get('email');
@@ -70,6 +83,12 @@ class ProvidersController extends Controller{
     }
     
     public function deleteProviders(Request $request) {
+        
+        $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
+        if (! $user->hasRoleByName('manager')) {
+            throw new \Exception('Acesso negado!', 403);
+        }
+        
         $ids = json_decode($request->get('ids'));
         
         foreach ($ids as $id) {

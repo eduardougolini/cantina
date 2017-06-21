@@ -27,8 +27,6 @@ Route::get('/aboutUs', ['as' => 'aboutUs', function() {
 
 Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\LogoutController@logoutUser']);
 
-Route::get('/sql', ['uses' => 'BaseController@teste']);
-
 Route::post('/login/authenticate', ['uses' =>'Auth\LoginController@authenticate']);
 Route::post('/registerNewUser', ['as'=> 'registerNewUser', 'uses' =>'Auth\RegisterController@create']);
 
