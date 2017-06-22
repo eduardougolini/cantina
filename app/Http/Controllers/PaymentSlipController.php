@@ -9,7 +9,6 @@ use Doctrine\ORM\EntityManager;
 use OpenBoleto\Banco\BancoDoBrasil;
 use OpenBoleto\Agente;
 use App\Entities\Payment;
-use App\Entities\Client;
 
 /**
  * Description of PaymentSlipController
@@ -24,6 +23,11 @@ class PaymentSlipController extends Controller {
         $this->em = $em;
     }
     
+    /**
+     * Gera boleto para o usuário
+     * @param Request $request
+     * @throws \Exception
+     */
     public function generatePaymentSlip(Request $request) {
         $value = $request->get('value');
         
@@ -40,29 +44,33 @@ class PaymentSlipController extends Controller {
         $date->modify('+3 day');
         
         $boleto = new BancoDoBrasil([
-        // Parâmetros obrigatórios
-        'dataVencimento' => $date,
-        'valor' => $value,
-        'sequencial' => 1234567,
-        'sacado' => $sacado,
-        'cedente' => $cedente,
-        'agencia' => 1724, // Até 4 dígitos
-        'carteira' => 18,
-        'conta' => 10403005, // Até 8 dígitos
-        'convenio' => 1234, // 4, 6 ou 7 dígitos
-        'contaDv' => 2,
-        'agenciaDv' => 1,
-        'descricaoDemonstrativo' => [ // Até 5
-            'Adição de saldo na carteira',
-        ],
-        'instrucoes' => [ // Até 8
-            'Não receber após o vencimento.',
-        ],
-    ]);
+            // Parâmetros obrigatórios
+            'dataVencimento' => $date,
+            'valor' => $value,
+            'sequencial' => 1234567,
+            'sacado' => $sacado,
+            'cedente' => $cedente,
+            'agencia' => 1724, // Até 4 dígitos
+            'carteira' => 18,
+            'conta' => 10403005, // Até 8 dígitos
+            'convenio' => 1234, // 4, 6 ou 7 dígitos
+            'contaDv' => 2,
+            'agenciaDv' => 1,
+            'descricaoDemonstrativo' => [ // Até 5
+                'Adição de saldo na carteira',
+            ],
+            'instrucoes' => [ // Até 8
+                'Não receber após o vencimento.',
+            ],
+        ]);
 
-    echo $boleto->getOutput();
+        echo $boleto->getOutput();
     }
     
+    /**
+     * Adiciona ligação entre pagamento(boleto) e usuário
+     * @param type $value
+     */
     private function addUserPayment($value) {        
         $user = Auth::user();
         
@@ -86,6 +94,10 @@ class PaymentSlipController extends Controller {
         $this->em->flush();
     }
     
+    /**
+     * Retorna os dados do sacado
+     * @return Agente
+     */
     private function getSacado() {
         $user = Auth::user();
         

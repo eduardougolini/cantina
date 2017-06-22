@@ -23,6 +23,12 @@ class SalesController extends Controller {
         $this->em = $em;
     }
     
+    /**
+     * Responsável pela renderização da tela de registro de vendas
+     * 
+     * @return type
+     * @throws \Exception
+     */
     public function registerSaleView() {
         
         $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
@@ -45,6 +51,12 @@ class SalesController extends Controller {
         return view('registerSales', ['user' => $user, 'products' => $products, 'clients' => $clients]);
     }
     
+    /**
+     * Responsável pelo registro de novas vendas
+     * 
+     * @param Request $request
+     * @throws \Exception
+     */
     public function registerNewSale(Request $request) {
         
         $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
@@ -81,6 +93,13 @@ class SalesController extends Controller {
         $this->em->flush();
     }
     
+    /**
+     * Reponsável por adicionar produtos a uma venda
+     * 
+     * @param Sale $sale
+     * @param type $productsList
+     * @return type
+     */
     private function addProductsToSale(Sale $sale, $productsList) {
         $totalPrice = 0;
         
@@ -99,6 +118,14 @@ class SalesController extends Controller {
         return $totalPrice;
     }
     
+    /**
+     * Adiciona um pagamento/transação ao usuário responsável pela compra
+     * 
+     * @param type $client
+     * @param type $sale
+     * @param type $type
+     * @param type $totalPrice
+     */
     private function addTransaction($client, $sale, $type, $totalPrice) {
         $transaction = new Transaction();
                 
@@ -111,6 +138,12 @@ class SalesController extends Controller {
         $this->em->persist($transaction);
     }
     
+    /**
+     * Responsável pelo desconto na conta do usuário
+     * 
+     * @param type $client
+     * @param type $totalValue
+     */
     private function deductValueFromAccountBalance($client, $totalValue) {
         $account = $client->getAccount();
         

@@ -44,6 +44,11 @@ class RegisterController extends Controller
         $this->em = $em;
     }
     
+    /**
+     * Responsável pelo registro de um novo usuário no sistema
+     * @param Request $request
+     * @return type
+     */
     public function create(Request $request) {
         $data['username'] = $request->get('username');
         $data['responsibleName'] = $request->get('responsibleName');

@@ -15,9 +15,8 @@ class AccountDetailsController extends Controller {
     }
     
     /**
-     * Show the profile for the given user.
-     *
-     * @return Response
+     * Renderiza view que mostra os dados do usuário logado
+     * @return type
      */
     public function showDetails()
     {

@@ -21,6 +21,13 @@ class ProvidersController extends Controller{
         $this->em = $em;
     }
     
+    /**
+     * Retorna tela responsável pela listagem de fornecedores cadastrados no 
+     * sistema
+     * 
+     * @return type
+     * @throws \Exception
+     */
     public function listProviders(){
         $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
         if (! $user->hasRoleByName('manager')) {
@@ -37,6 +44,12 @@ class ProvidersController extends Controller{
         return view('listProviders', ['user' => $user, 'providers' => $providers]);
     }
     
+    /**
+     * Responsável por renderizar a tela de registros de novos fornecedores no 
+     * sistema
+     * @return type
+     * @throws \Exception
+     */
     public function registerProviderView() {
         $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
         if (! $user->hasRoleByName('manager')) {
@@ -46,6 +59,12 @@ class ProvidersController extends Controller{
         return view('registerProviders', ['user' => $user]);
     }
     
+    /**
+     * Responsável pelo registro de novos fornecedores no sistema
+     * 
+     * @param Request $request
+     * @throws \Exception
+     */
     public function registerNewProvider(Request $request) {
         
         $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
@@ -82,6 +101,12 @@ class ProvidersController extends Controller{
         $this->em->flush();
     }
     
+    /**
+     * Responsável pela remoção de um ou mais fornecedores
+     * 
+     * @param Request $request
+     * @throws \Exception
+     */
     public function deleteProviders(Request $request) {
         
         $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);

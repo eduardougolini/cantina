@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Entities\Product;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
-use App\Entities\Payment;
 
 /**
  * Description of PaymentsController
@@ -22,6 +20,10 @@ class PaymentsController extends Controller {
         $this->em = $em;
     }
     
+    /**
+     * Renderiza a tela de pagamentos
+     * @return type
+     */
     public function renderPaymentsView() {
         $user = Auth::user();
         
@@ -37,6 +39,12 @@ class PaymentsController extends Controller {
         return view('payments', ['user' => $user, 'payments' => $payments]);
     }
     
+    /**
+     * Define que um boleto de um usuário foi pago e adiciona o valor do boleto 
+     * à carteira do usuário
+     * @param Request $request
+     * @throws \Exception
+     */
     public function setPaymentAsPaid(Request $request) {
         
         $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);

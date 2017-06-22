@@ -15,9 +15,8 @@ class BaseController extends Controller {
     }
     
     /**
-     * Show the profile for the given user.
-     *
-     * @return Response
+     * Renderiza a home para o usuário
+     * @return type
      */
     public function home() {
         $user = Auth::user();

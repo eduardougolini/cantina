@@ -19,6 +19,11 @@ class WalletController extends Controller{
         $this->em = $em;
     }
     
+    /**
+     * Responsável por renderizar a tela da carteira do usuário
+     * 
+     * @return type
+     */
     public function showWallet(){
         $user = Auth::user();
         

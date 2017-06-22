@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Auth;
  */
 class LogoutController extends Controller {
 
+    /**
+     * Responsável por deslogar o usuário do sistema
+     * @return type
+     */
     public function logoutUser() {
         Auth::logout();
         

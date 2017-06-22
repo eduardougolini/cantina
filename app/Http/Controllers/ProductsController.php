@@ -17,9 +17,10 @@ class ProductsController extends Controller {
     }
     
     /**
-     * Show the profile for the given user.
-     *
-     * @return Response
+     * Responsável pela renderização da tela de registro de produtos
+     * 
+     * @return type
+     * @throws \Exception
      */
     public function registerProductView() {
         $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
@@ -36,6 +37,12 @@ class ProductsController extends Controller {
         ]);
     }   
     
+    /**
+     * Registra novos produtos
+     * 
+     * @param Request $request
+     * @throws \Exception
+     */
     public function registerNewProduct(Request $request) {
         $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);
         if (! $user->hasRoleByName('manager')) {
@@ -69,6 +76,11 @@ class ProductsController extends Controller {
         $this->em->flush();
     }
     
+    /**
+     * Lista os produtos cadastrados no sistema
+     * 
+     * @return type
+     */
     public function listProducts() {
         $user = Auth::user();
         
@@ -82,6 +94,12 @@ class ProductsController extends Controller {
         return view('listProducts', ['user' => $user, 'products' => $products]);
     }
     
+    /**
+     * Retorna os dados de um produto
+     * 
+     * @param type $productId
+     * @return type
+     */
     public function getProductData($productId) {
         $product = $this->em->createQuery(
                 'SELECT p '
@@ -93,6 +111,12 @@ class ProductsController extends Controller {
         return json_encode($product[0]);
     }
     
+    /**
+     * Remove produtos do sistema
+     * 
+     * @param Request $request
+     * @throws \Exception
+     */
     public function deleteProducts(Request $request) {
         
         $user = $this->em->getRepository('Cantina:Users')->find(Auth::user()->id);

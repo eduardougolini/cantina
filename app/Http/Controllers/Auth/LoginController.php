@@ -31,7 +31,7 @@ class LoginController extends Controller
 
     /**
      * Create a new controller instance.
-     *
+     * 
      * @return void
      */
     public function __construct()
@@ -39,6 +39,13 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
     
+    /**
+     * Responsável pela autenticação de um usuário.
+     * 
+     * @param Request $request
+     * @return type
+     * @throws \Exception
+     */
     public function authenticate(Request $request) {
         $email = $request->get('usermail');
         $password = $request->get('password');
