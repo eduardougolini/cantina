@@ -41,7 +41,7 @@
         Options +Indexes +FollowSymLinks +MultiViews
         AllowOverride All
         Allow from All
-   </Directory>
+    </Directory>
 
 </VirtualHost>
 ```
@@ -62,4 +62,4 @@
 ## ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Diferenciais do nosso sistema:
   - Nosso sistema tem uma feature apelidada de *Wallet*, ela possibilita que um usuário possa gerar boletos para ter um crédito em uma carteira online, podendo assim, utilizar o saldo de sua carteira para realizar compras na cantina.
   - Nosso sistema utiliza algumas das mais novas tendências de desenvolvimento front-end web da atualizade(2017), como o [Material Design](https://getmdl.io/) e o [Polymer](https://www.polymer-project.org/)
-  - Para o back-end, integramos o framework de Mapeamento Objeto-Relacional(ORM) [Dcotrine ORM](http://www.doctrine-project.org/) para cuidar do nosso acesso ao banco de dados e da nossa lista de controle de acesso(ACL)
+  - Para o back-end, integramos o framework de Mapeamento Objeto-Relacional(ORM) [Doctrine ORM](http://www.doctrine-project.org/) para cuidar do nosso acesso ao banco de dados e da nossa lista de controle de acesso(ACL)
